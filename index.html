@@ -38,13 +38,13 @@
   .q:first-of-type{border-top:0}
   .q-title{font-weight:600;font-size:15px;margin-bottom:2px}
   .q-help{font-size:12.5px;color:var(--muted);margin-bottom:10px}
-  .scale{display:grid;gap:4px}
-  .scale button{font:inherit;font-weight:700;font-size:14px;padding:10px 0;border-radius:7px;border:1.5px solid;cursor:pointer;transition:transform .08s,background .15s,color .15s}
+  .scale{display:grid;gap:3px;justify-items:center}
+  .scale button{font:inherit;font-weight:700;font-size:13px;padding:0;width:100%;max-width:36px;aspect-ratio:1/1;border-radius:50%;border:1.5px solid;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .08s,background .15s,color .15s}
   .scale button:active{transform:scale(.94)}
   .t-low{color:var(--low);border-color:var(--low);background:var(--low-bg)}
   .t-mid{color:var(--mid);border-color:var(--mid);background:var(--mid-bg)}
   .t-high{color:var(--high);border-color:var(--high);background:var(--high-bg)}
-  .t-na{color:var(--na);border-color:#c5cdc9;background:var(--na-bg);font-size:11px!important}
+  .t-na{color:var(--na);border-color:#c5cdc9;background:var(--na-bg);font-size:9px!important}
   .scale button[aria-pressed=true].t-low{background:var(--low);color:#fff}
   .scale button[aria-pressed=true].t-mid{background:var(--mid);color:#fff}
   .scale button[aria-pressed=true].t-high{background:var(--high);color:#fff}
