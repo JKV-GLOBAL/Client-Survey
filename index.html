@@ -88,7 +88,7 @@
     <p>Tap your answers below – your choices are saved automatically. It takes about 2 minutes.</p>
   </header>
 
-  <div id="survey">
+  <div id="survey" class="hidden">
     <div class="progress">
       <div class="bar"><i id="barFill"></i></div>
       <div class="progress-row"><span id="progressText">0 of 0 answered</span><span id="saved" class="saved"></span></div>
@@ -105,7 +105,21 @@
       <p>Log in to your account and access the markets in seconds.</p>
       <a class="btn btn-gold" href="https://cabinet.jkvglobal.com/login">TRADE NOW</a>
     </div>
-    <p class="note" style="margin-top:16px"><a href="#" id="editAgain" style="color:var(--green)">Change my answers</a></p>
+  </div>
+
+  <div id="already" class="card thanks center hidden">
+    <div class="tick">✓</div>
+    <h2 style="font-size:22px;margin:0 0 8px;color:var(--ink)">Response already submitted</h2>
+    <p class="note" style="font-size:15px;line-height:1.6">Thank you – we have already received your feedback. Each client can submit the survey once. Our management team is reviewing all responses.</p>
+    <div class="trade">
+      <h3>Ready for your next trade?</h3>
+      <p>Log in to your account and access the markets in seconds.</p>
+      <a class="btn btn-gold" href="https://cabinet.jkvglobal.com/login">TRADE NOW</a>
+    </div>
+  </div>
+
+  <div id="loading" class="card thanks center">
+    <p class="note" style="font-size:15px;margin:0">Loading your survey…</p>
   </div>
 
   <div id="invalid" class="card thanks center hidden">
@@ -121,7 +135,7 @@
   </footer>
 </div>
 
-<div class="submit-bar" id="submitBar">
+<div class="submit-bar hidden" id="submitBar">
   <div class="inner">
     <small id="submitHint">Answer as many questions as you like, then submit.</small>
     <button class="btn btn-green" id="submitBtn">Submit</button>
@@ -272,6 +286,7 @@ async function save(final) {
   try {
     const res = await fetch(API_URL, { method: "POST", body: JSON.stringify({ cid: CID, s: SIG, answers, final }) });
     const data = await res.json();
+    if (data.error === "already_submitted") { showOnly("already"); return false; }
     if (!data.ok) throw new Error(data.error || "save failed");
     setSaved("All changes saved ✓", "ok");
     return true;
@@ -292,24 +307,24 @@ $("submitBtn").addEventListener("click", async () => {
   if (!ok) { await new Promise(r => setTimeout(r, 1200)); ok = await save(true); }
   btn.disabled = false; btn.textContent = "Submit";
   if (ok) {
-    $("survey").classList.add("hidden"); $("submitBar").classList.add("hidden");
-    $("thanks").classList.remove("hidden"); window.scrollTo(0, 0);
+    showOnly("thanks");
+  } else if (!$("already").classList.contains("hidden")) {
+    // already submitted (e.g. in another tab) – the "already submitted" screen is showing
   } else {
     $("submitHint").textContent = "We couldn't submit just now. Please check your connection and try again.";
   }
 });
 
-$("editAgain").addEventListener("click", e => {
-  e.preventDefault();
-  $("thanks").classList.add("hidden"); $("survey").classList.remove("hidden"); $("submitBar").classList.remove("hidden");
-});
+// Show one screen: "survey" (with the Submit bar), "thanks", "already", "invalid" or "loading"
+function showOnly(name) {
+  ["survey", "thanks", "already", "invalid", "loading"].forEach(id => $(id).classList.toggle("hidden", id !== name));
+  $("submitBar").classList.toggle("hidden", name !== "survey");
+  window.scrollTo(0, 0);
+}
 
 /* ── Start ── */
 (function init() {
-  if (!/^[A-Za-z0-9_-]{1,40}$/.test(CID) || !/^[0-9a-f]{16}$/.test(SIG)) {
-    $("survey").classList.add("hidden"); $("submitBar").classList.add("hidden"); $("invalid").classList.remove("hidden");
-    return;
-  }
+  if (!/^[A-Za-z0-9_-]{1,40}$/.test(CID) || !/^[0-9a-f]{16}$/.test(SIG)) { showOnly("invalid"); return; }
   if (NAME) $("greeting").textContent = `How are we doing, ${NAME}?`;
 
   // The answer tapped in the email
@@ -320,40 +335,36 @@ $("editAgain").addEventListener("click", e => {
     else if (/^p\d$/.test(q) || q === "nps") tapped[q] = v === "na" ? "na" : Number(v);
     else if (q !== "open") tapped[q] = v;
   }
-  answers = Object.assign({}, tapped);
-  render();
-  if (Object.keys(tapped).length) save(false);
 
-  // Restore anything already saved (e.g. the client comes back later)
+  function openSurvey(saved) {
+    // saved answers < answer tapped in the email
+    const merged = Object.assign({}, saved || {});
+    Object.keys(tapped).forEach(k => {
+      merged[k] = (k === "im" || k === "en")
+        ? Array.from(new Set([...((saved || {})[k] || []), ...tapped[k]]))
+        : tapped[k];
+    });
+    answers = merged;
+    render();
+    showOnly("survey");
+    if (Object.keys(tapped).length) save(false);
+    if (q && q !== "open") {
+      setTimeout(() => {
+        const el = document.querySelector(`[data-k="${q}"]`);
+        if (el) el.closest(".q").scrollIntoView({ behavior: "smooth", block: "center" });
+      }, 150);
+    }
+  }
+
+  // First check with the server: is the link valid, and has this client already submitted?
   fetch(`${API_URL}?load=1&cid=${encodeURIComponent(CID)}&s=${SIG}`)
     .then(r => r.json())
     .then(d => {
-      if (d.ok === false) {   // link not valid (edited or incomplete)
-        $("survey").classList.add("hidden"); $("submitBar").classList.add("hidden"); $("invalid").classList.remove("hidden");
-        return;
-      }
-      if (!d.answers) return;
-      // saved answers < answer tapped in the email < anything changed on this page since opening
-      const merged = Object.assign({}, d.answers);
-      Object.keys(tapped).forEach(k => {
-        merged[k] = (k === "im" || k === "en")
-          ? Array.from(new Set([...(d.answers[k] || []), ...tapped[k]]))
-          : tapped[k];
-      });
-      touched.forEach(k => { merged[k] = answers[k]; });
-      answers = merged;
-      const y = window.scrollY; render(); window.scrollTo(0, y);
-      if (Object.keys(tapped).some(k => k === "im" || k === "en")) save(false);
+      if (d.ok === false) { showOnly("invalid"); return; }
+      if (d.submitted) { showOnly("already"); return; }
+      openSurvey(d.answers);
     })
-    .catch(() => {});
-
-  // Take the client straight to the question they tapped
-  if (q && q !== "open") {
-    setTimeout(() => {
-      const el = document.querySelector(`[data-k="${q}"]`);
-      if (el) el.closest(".q").scrollIntoView({ behavior: "smooth", block: "center" });
-    }, 150);
-  }
+    .catch(() => openSurvey({}));   // offline check failed – the server still blocks a second submission
 })();
 </script>
 </body>
