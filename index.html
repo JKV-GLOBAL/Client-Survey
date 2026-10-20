@@ -190,7 +190,7 @@ const CID = params.get("cid") || "";
 const SIG = params.get("s") || "";
 const NAME = (params.get("n") || "").trim();
 let answers = {};
-let saveTimer = null, saving = false, pending = false;
+let saveTimer = null, saveChain = Promise.resolve(), submitting = false, submitted = false;
 const touched = new Set();   // keys the client changed on this page
 
 const $ = id => document.getElementById(id);
@@ -280,37 +280,45 @@ function queueSave(delay) {
   saveTimer = setTimeout(() => save(false), delay || 700);
 }
 
-async function save(final) {
-  if (saving) { pending = true; return false; }
-  saving = true; setSaved("Saving…");
+// Saves run one after another (never two at once). Submit waits for any auto-save
+// that is still running, then sends the final answers – so one click is always enough.
+function save(final) {
+  const run = saveChain.then(() => doSave(final));
+  saveChain = run.catch(() => {});
+  return run;
+}
+
+async function doSave(final) {
+  if (submitted || (submitting && !final)) return true;   // nothing to auto-save once submitting
+  setSaved(final ? "Submitting…" : "Saving…");
   try {
     const res = await fetch(API_URL, { method: "POST", body: JSON.stringify({ cid: CID, s: SIG, answers, final }) });
     const data = await res.json();
-    if (data.error === "already_submitted") { showOnly("already"); return false; }
+    if (data.error === "already_submitted") { submitted = true; showOnly("already"); return false; }
     if (!data.ok) throw new Error(data.error || "save failed");
+    if (final) submitted = true;
     setSaved("All changes saved ✓", "ok");
     return true;
   } catch (err) {
     setSaved("Couldn't save – check your connection", "err");
     return false;
-  } finally {
-    saving = false;
-    if (pending) { pending = false; queueSave(200); }
   }
 }
 
 $("submitBtn").addEventListener("click", async () => {
+  if (submitting || submitted) return;          // ignore double taps
+  submitting = true;
   clearTimeout(saveTimer);
   const btn = $("submitBtn");
   btn.disabled = true; btn.textContent = "Submitting…";
+  if (document.getElementById("comment")) answers.comment = document.getElementById("comment").value;
   let ok = await save(true);
-  if (!ok) { await new Promise(r => setTimeout(r, 1200)); ok = await save(true); }
+  if (!ok && !submitted) { await new Promise(r => setTimeout(r, 1500)); ok = await save(true); }
+  submitting = false;
   btn.disabled = false; btn.textContent = "Submit";
   if (ok) {
     showOnly("thanks");
-  } else if (!$("already").classList.contains("hidden")) {
-    // already submitted (e.g. in another tab) – the "already submitted" screen is showing
-  } else {
+  } else if (!submitted) {
     $("submitHint").textContent = "We couldn't submit just now. Please check your connection and try again.";
   }
 });
