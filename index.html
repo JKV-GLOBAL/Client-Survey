@@ -154,7 +154,8 @@ const SECTIONS = [
     { k: "st", type: "single", title: "Which best describes you today?", options: [
       ["active", "I trade actively with JKV Global"],
       ["lapsed", "I have traded before, but not recently"],
-      ["new", "I have opened my account but not traded yet"] ] } ] },
+      ["new", "I completed my KYC but have never traded"],
+      ["pending", "I opened an account but my KYC is still pending"] ] } ] },
   { step: 2, title: "Your trading experience", trading: true,
     note: "Rate from 1 (Very Poor) to 10 (Excellent). Tap N/A if it doesn't apply.", questions: [
     { k: "p0", type: "scale", na: true, title: "Trading Spreads", help: "How competitive are our bid/ask spreads?" },
@@ -197,7 +198,7 @@ const $ = id => document.getElementById(id);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const tone = (n, nps) => n === "na" ? "na" : nps ? (n <= 6 ? "low" : n <= 8 ? "mid" : "high") : (n <= 4 ? "low" : n <= 7 ? "mid" : "high");
 const allQuestions = () => SECTIONS.flatMap(s => s.questions.map(q => Object.assign({ section: s }, q)));
-const notTraded = () => answers.st === "new";
+const notTraded = () => answers.st === "new" || answers.st === "pending";
 
 /* ── Render ── */
 function render() {
@@ -208,7 +209,7 @@ function render() {
       <div class="step">Step ${sec.step} of ${SECTIONS.length}</div>
       <h2>${sec.title}</h2>
       ${sec.note && !skip ? `<p class="note">${sec.note}</p>` : ""}
-      ${skip ? `<div class="skipped">You haven't traded yet, so this step is skipped. You can change your answer in Step 1 at any time.</div>`
+      ${skip ? `<div class="skipped">As you haven't started trading yet, this step is skipped. You can change your answer in Step 1 at any time.</div>`
              : qs}
     </section>`;
   }).join("");
