@@ -94,15 +94,27 @@
   details.terms summary{cursor:pointer;font-weight:600;color:var(--green-dark)}
   details.terms ol{padding-left:18px;margin:10px 0 2px;line-height:1.55}
   .credit a.support-btn,.support-btn{color:#fff;display:inline-block;margin-top:12px;background:var(--green);color:#fff;text-decoration:none;font-weight:700;padding:12px 20px;border-radius:9px}
-  .social{margin:8px 0 2px}
-  .social a{display:inline-block;margin-right:12px;font-weight:600}
+  .social{margin:4px 0 12px;display:flex;gap:12px}
+  .social a{display:inline-block;line-height:0}
+  .social{align-items:center;flex-wrap:nowrap}
+  .social img{width:28px;height:28px;border-radius:6px;display:block}
+  .social .foot-logo{margin-right:6px}
+  .social .foot-logo img{width:34px;height:36px;border-radius:0}
+  .logo{display:flex;align-items:center;white-space:nowrap}
+  .logo-img{width:44px;height:44px;margin-right:10px;flex:none}
+  .logo .lw{color:#fff}
+  .brand{gap:10px}.brand .tag{text-align:right;white-space:nowrap}
+  @media(max-width:380px){.logo{font-size:18px}.logo-img{width:38px;height:38px;margin-right:8px}.brand .tag{font-size:10px;letter-spacing:1px}}
+  .risk-note{margin:12px 0 0;padding-top:10px;border-top:1px solid var(--line);font-style:italic}
+  .opt-multi::before{border-radius:4px!important}
+  .opt-multi[aria-pressed=true]::before{content:"✓";color:var(--green);font-size:12px;font-weight:700;line-height:12px;text-align:center;background:#fff;box-shadow:none!important}
   .tagline{font-style:italic;color:var(--green-dark);margin-top:10px;font-size:14px}
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
-    <div class="brand"><div class="logo">JKV <span>GLOBAL</span></div><div class="tag">Client Experience Survey</div></div>
+    <div class="brand"><div class="logo"><img class="logo-img" src="icons/jkv-logo-badge.png" alt="JKV Global logo" width="44" height="44"><span class="lw">JKV</span>&nbsp;<span>GLOBAL</span></div><div class="tag">Client Survey</div></div>
     <h1 id="greeting">Help Us Improve Your Trading Experience</h1>
     <p>About 3 minutes · your answers are saved as you go.</p>
   </header>
@@ -177,7 +189,7 @@
       <li>Clients with pending or incomplete KYC may complete the survey but will not qualify for the credit unless their account receives KYC approval and meets the applicable eligibility requirements.</li>
       <li>Upon completing the survey, eligible clients must contact JKV Global Support to request the credit.</li>
       <li>The credit is subject to account verification, eligibility checks and JKV Global's applicable bonus and trading-credit terms.</li>
-      <li>The credit is a tradable bonus and is not a cash deposit or a direct cash withdrawal entitlement. Any usage, withdrawal or profit-withdrawal restrictions will be governed by the applicable bonus terms.</li>
+      <li>The credit is a tradable bonus. It is not a cash bonus, a cash deposit or a direct cash withdrawal entitlement, nor is it a loss-absorbing bonus. Any usage, withdrawal or profit-withdrawal restrictions will be governed by the applicable bonus terms.</li>
       <li>JKV Global reserves the right to verify survey completion and determine eligibility in accordance with its applicable policies.</li>
       <li>Additional terms and conditions may apply.</li>
     </ol>
@@ -189,6 +201,7 @@
     JKV Global Capital Market Services Ltd. is authorised and regulated by the Financial Services Commission (FSC), Mauritius, Licence No. GB23201820.
     Risk warning: CFDs and forex are leveraged products and carry a high level of risk to your capital.
     <br><a href="https://www.jkvglobal.com">jkvglobal.com</a>
+    <p class="risk-note">Please trade responsibly: trading decisions are made at your own discretion and risk, so only trade with funds you can afford to lose and seek independent advice if needed.</p>
   </footer>
 </div>
 
@@ -205,17 +218,15 @@
    ──────────────────────────────────────────────────────────────────────────── */
 const API_URL = "https://script.google.com/macros/s/AKfycbzObcRuuT1KhJN6IPcQ8Q1-SGc8kZ-1IXL0IYdYsBcrjdyrTURUYGWqgtTijWxv-c4P/exec";      // Apps Script Web app URL (ends in /exec)
 const SUPPORT_EMAIL = "support@jkvglobal.com";               // where clients request the $50 credit
-const SOCIAL_LINKS = [                                       // leave a URL empty "" to hide it
-  ["Instagram", "https://www.instagram.com/jkvglobal_official/"],
-  ["LinkedIn",  "PASTE_LINKEDIN_URL"]
+const SOCIAL_LINKS = [                                       // [name, link, icon file in the icons/ folder]
+  ["Facebook",  "https://www.facebook.com/jkvglobal",            "icons/facebook.png"],
+  ["Instagram", "https://www.instagram.com/jkvglobal_official/", "icons/instagram.png"],
+  ["LinkedIn",  "https://www.linkedin.com/company/jkv-global/",  "icons/linkedin.png"]
 ];
 
 /* ── Questions – keys and order must match JKV_Survey_Builder.gs ── */
-const L_POOR = ["Very Poor","Poor","Below Expectations","Fair","Average","Satisfactory","Good","Very Good","Excellent","Exceptional"];
-const L_SAT  = ["Very Dissatisfied","Dissatisfied","Below Expectations","Fair","Neutral","Satisfactory","Satisfied","Very Satisfied","Extremely Satisfied","Exceptional"];
-const L_EASY = ["Very Difficult","Difficult","Below Expectations","Fair","Average","Satisfactory","Easy","Very Easy","Extremely Easy","Exceptional"];
-const L_ATTR = ["Not Attractive","Slightly Attractive","Below Expectations","Fair","Average","Moderately Attractive","Good","Very Attractive","Highly Attractive","Exceptional"];
-const L_OVER = ["Very Dissatisfied","Dissatisfied","Below Expectations","Fair","Average","Satisfactory","Satisfied","Very Satisfied","Extremely Satisfied","Completely Satisfied"];
+// One rating scale for every question (1–10) – same meaning for each number everywhere
+const L_SCALE = ["Very Poor","Poor","Unsatisfactory","Below Expectations","Below Average","Average","Good","Very Good","Excellent","Exceptional"];
 const NA_LABEL = "Not Applicable / Unable to Assess";
 
 const SECTIONS = [
@@ -224,20 +235,20 @@ const SECTIONS = [
       "I trade actively with JKV Global", "I have traded before, but not recently",
       "I completed my KYC but have never traded", "I opened an account but my KYC is still pending" ] } ] },
   { title: "Your Trading Experience", trading: true, questions: [
-    { n: 1, k: "p0", type: "scale", labels: L_POOR, title: "How would you rate the competitiveness of JKV Global's bid/ask spreads across the Forex pairs and other CFD instruments you trade?" },
-    { n: 2, k: "p1", type: "scale", labels: L_SAT,  title: "How satisfied are you with the speed at which your Forex and CFD orders are executed?" },
-    { n: 3, k: "p2", type: "scale", labels: L_POOR, title: "How would you rate JKV Global's order fill rate, requote frequency and overall execution reliability under normal market conditions?" },
-    { n: 4, k: "p3", type: "scale", labels: L_POOR, title: "How effectively does JKV Global manage positive and negative slippage during order execution?" },
-    { n: 5, k: "p4", type: "scale", labels: L_POOR, title: "How competitive and transparent do you find our leverage options, swap rates, commissions and overall trading costs?" } ] },
+    { n: 1, k: "p0", type: "scale", labels: L_SCALE, title: "How would you rate the competitiveness of JKV Global's bid/ask spreads across the Forex pairs and other CFD instruments you trade?" },
+    { n: 2, k: "p1", type: "scale", labels: L_SCALE, title: "How satisfied are you with the speed at which your Forex and CFD orders are executed?" },
+    { n: 3, k: "p2", type: "scale", labels: L_SCALE, title: "How would you rate JKV Global's order fill rate, requote frequency and overall execution reliability under normal market conditions?" },
+    { n: 4, k: "p3", type: "scale", labels: L_SCALE, title: "How effectively does JKV Global manage positive and negative slippage during order execution?" },
+    { n: 5, k: "p4", type: "scale", labels: L_SCALE, title: "How competitive and transparent do you find our leverage options, swap rates, commissions and overall trading costs?" } ] },
   { title: "Platform and Account Experience", questions: [
-    { n: 6, k: "p5", type: "scale", labels: L_POOR, title: "How would you rate the stability, responsiveness and ease of use of the JKV Global trading platform?" },
-    { n: 7, k: "p6", type: "scale", labels: L_EASY, title: "How easy is it to navigate our client portal, manage your trading account and access essential account functions?" } ] },
+    { n: 6, k: "p5", type: "scale", labels: L_SCALE, title: "How would you rate the stability, responsiveness and ease of use of the JKV Global trading platform?" },
+    { n: 7, k: "p6", type: "scale", labels: L_SCALE, title: "How easy is it to navigate our client portal, manage your trading account and access essential account functions?" } ] },
   { title: "Communication and Client Engagement", questions: [
-    { n: 8, k: "p7", type: "scale", labels: L_ATTR, title: "How attractive and relevant do you find JKV Global's promotions, trading incentives and client benefits?" },
-    { n: 9, k: "p8", type: "scale", labels: L_POOR, title: "How effectively does JKV Global communicate trading-related updates, account information, product changes and important announcements?" } ] },
+    { n: 8, k: "p7", type: "scale", labels: L_SCALE, title: "How attractive and relevant do you find JKV Global's promotions, trading incentives and client benefits?" },
+    { n: 9, k: "p8", type: "scale", labels: L_SCALE, title: "How effectively does JKV Global communicate trading-related updates, account information, product changes and important announcements?" } ] },
   { title: "Overall Satisfaction and Expectations", questions: [
-    { n: 10, k: "p9", type: "scale", labels: L_OVER, title: "Taking into account execution quality, trading costs, platform performance and client support, how satisfied are you with JKV Global overall?" },
-    { n: 11, k: "im", type: "single", other: 10, title: "What is the single most important improvement you would like to see from JKV Global?", help: "Select one option.", options: [
+    { n: 10, k: "p9", type: "scale", labels: L_SCALE, title: "Taking into account execution quality, trading costs, platform performance and client support, how satisfied are you with JKV Global overall?" },
+    { n: 11, k: "im", type: "multi", min: 3, other: 10, title: "What are the most important improvements you would like to see from JKV Global?", help: "Select at least 3 options.", options: [
       "More competitive Forex and CFD spreads", "Faster order execution", "Improved execution reliability and fewer requotes",
       "Better slippage management", "More competitive commissions, swaps and trading costs", "Improved trading platform stability",
       "Easier account management and client portal access", "Faster and more effective customer support",
@@ -262,7 +273,9 @@ function clearLocal() { try { localStorage.removeItem(LOCAL_KEY); } catch (e) {}
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const tone = n => n === "na" ? "na" : n <= 4 ? "low" : n <= 7 ? "mid" : "high";
 const allQuestions = () => SECTIONS.flatMap(s => s.questions);
-const isAnswered = q => answers[q.k] !== undefined && answers[q.k] !== null && answers[q.k] !== "";
+const isAnswered = q => q.type === "multi"
+  ? Array.isArray(answers[q.k]) && answers[q.k].length >= (q.min || 1)
+  : answers[q.k] !== undefined && answers[q.k] !== null && answers[q.k] !== "";
 const notTraded = () => answers.st === "new" || answers.st === "pending";
 const skippedSection = sec => sec.trading && notTraded();
 const required = () => SECTIONS.filter(sec => !skippedSection(sec)).flatMap(s => s.questions).filter(q => !q.optional);
@@ -297,6 +310,14 @@ function renderQ(q) {
     if (q.other !== undefined && v === q.other) {
       body += `<input class="other" id="imOther" maxlength="500" placeholder="Please tell us which improvement (optional)" value="${esc(answers.imOther || "")}">`;
     }
+  } else if (q.type === "multi") {
+    const sel = Array.isArray(v) ? v : [];
+    body = `<div class="options">` + q.options.map((label, i) =>
+      `<button type="button" class="opt opt-multi" data-k="${q.k}" data-v="${i}" aria-pressed="${sel.includes(i)}">${esc(label)}</button>`).join("") + `</div>`;
+    body += `<div class="chosen">${sel.length} selected${sel.length < q.min ? ` – please select at least ${q.min}` : " ✓"}</div>`;
+    if (q.other !== undefined && sel.includes(q.other)) {
+      body += `<input class="other" id="imOther" maxlength="500" placeholder="Please tell us which other improvement (optional)" value="${esc(answers.imOther || "")}">`;
+    }
   } else if (q.type === "text") {
     body = `<textarea id="comment" maxlength="2000" placeholder="Type here…">${esc(v || "")}</textarea>`;
   }
@@ -311,11 +332,13 @@ function renderQ(q) {
 
 function missingText(list) {
   const step1 = list.some(q => !q.n);
-  const nums = list.filter(q => q.n).map(q => q.n);
+  const multi = list.filter(q => q.type === "multi");
+  const nums = list.filter(q => q.n && q.type !== "multi").map(q => q.n);
   const parts = [];
-  if (step1) parts.push("Step 1 (About you)");
-  if (nums.length) parts.push((nums.length > 1 ? "questions " : "question ") + nums.join(", "));
-  return `Please answer ${parts.join(" and ")}${nums.length ? " (you can choose N/A)" : ""}.`;
+  if (step1) parts.push("answer Step 1 (About you)");
+  if (nums.length) parts.push(`answer ${nums.length > 1 ? "questions" : "question"} ${nums.join(", ")} (you can choose N/A)`);
+  multi.forEach(q => parts.push(`select at least ${q.min} options in question ${q.n}`));
+  return "Please " + parts.join(", and ") + ".";
 }
 
 function updateProgress() {
@@ -336,11 +359,15 @@ document.addEventListener("click", e => {
   const k = b.dataset.k, raw = b.dataset.v;
   const q = allQuestions().find(x => x.k === k);
   if (q.type === "scale") answers[k] = raw === "na" ? "na" : Number(raw);
+  else if (q.type === "multi") {
+    const i = Number(raw), list = Array.isArray(answers[k]) ? answers[k].slice() : [];
+    answers[k] = list.includes(i) ? list.filter(x => x !== i) : list.concat(i).sort((a, b) => a - b);
+  }
   else answers[k] = q.codes ? raw : Number(raw);
   const y = window.scrollY;
   render();
   window.scrollTo(0, y);
-  if (k === "im" && answers.im === q.other) { const o = $("imOther"); if (o) o.focus({ preventScroll: true }); }
+  if (k === "im" && Number(raw) === q.other && (answers.im || []).includes(q.other)) { const o = $("imOther"); if (o) o.focus({ preventScroll: true }); }
   queueSave();
 });
 
@@ -429,8 +456,10 @@ function showOnly(name) {
   const mail = `mailto:${SUPPORT_EMAIL}?subject=${encodeURIComponent("Survey completed – $50 trading credit request (Client ID " + CID + ")")}` +
                `&body=${encodeURIComponent("Hello JKV Global Support,\n\nI have completed the Client Experience Survey and would like to request my $50 trading credit.\n\nClient ID: " + CID + "\n\nThank you.")}`;
   document.querySelectorAll(".js-support").forEach(a => { a.href = mail; a.textContent = "Contact JKV Global Support (" + SUPPORT_EMAIL + ")"; });
-  $("social").innerHTML = SOCIAL_LINKS.filter(([, u]) => /^https?:\/\//.test(u))
-    .map(([n, u]) => `<a href="${esc(u)}" target="_blank" rel="noopener">${esc(n)}</a>`).join("");
+  // Footer: logo first, then all social icons on one line
+  $("social").innerHTML = `<a class="foot-logo" href="https://www.jkvglobal.com" target="_blank" rel="noopener" aria-label="JKV Global website"><img src="icons/jkv-logo.png" alt="JKV Global" width="34" height="36"></a>` +
+    SOCIAL_LINKS.filter(([, u]) => /^https?:\/\//.test(u))
+    .map(([n, u, icon]) => `<a href="${esc(u)}" target="_blank" rel="noopener" title="JKV Global on ${esc(n)}" aria-label="JKV Global on ${esc(n)}"><img src="${esc(icon)}" alt="${esc(n)}" width="28" height="28"></a>`).join("");
 
   if (!/^[A-Za-z0-9_-]{1,40}$/.test(CID) || !/^[0-9a-f]{16}$/.test(SIG)) { showOnly("invalid"); return; }
   if (NAME) { $("dear").textContent = `Dear ${NAME},`; }
