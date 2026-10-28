@@ -78,28 +78,66 @@
   .trade h3{margin:0 0 4px;font-size:18px}.trade p{margin:0 0 16px;color:#d6eadf;font-size:14px}
   footer{font-size:11px;line-height:1.6;color:var(--muted);padding:6px 4px 20px}
   footer a{color:var(--green)}
+  .intro p{font-size:14.5px;line-height:1.6;margin:0 0 10px;color:#33403a}
+  .credit{background:#fff8e6;border:1.5px solid var(--gold);border-radius:12px;padding:14px 16px;margin:12px 0 6px}
+  .credit b.big{display:block;font-size:16px;color:var(--green-dark);margin-bottom:4px}
+  .credit p{font-size:13.5px!important;margin:0 0 6px!important;color:#4a4a3a!important}
+  .credit a{color:var(--green);font-weight:600}
+  .chosen{font-size:12.5px;color:var(--green);font-weight:600;min-height:18px;margin-top:4px}
+  .req{color:var(--low);font-size:12.5px;font-weight:600;margin-top:6px}
+  .q.missing{background:#fff6f5;border-radius:10px;padding-left:8px;padding-right:8px}
+  .qnum{color:var(--gold);margin-right:4px}
+  input.other{width:100%;font:inherit;font-size:14px;padding:11px 12px;border:1.5px solid var(--line);border-radius:9px;margin-top:8px}
+  input.other:focus{outline:none;border-color:var(--green)}
+  .optional{font-weight:400;color:var(--muted);font-size:12.5px}
+  details.terms{background:#fff;border-radius:12px;padding:12px 16px;margin:0 0 14px;font-size:13px;color:#4a5550}
+  details.terms summary{cursor:pointer;font-weight:600;color:var(--green-dark)}
+  details.terms ol{padding-left:18px;margin:10px 0 2px;line-height:1.55}
+  .credit a.support-btn,.support-btn{color:#fff;display:inline-block;margin-top:12px;background:var(--green);color:#fff;text-decoration:none;font-weight:700;padding:12px 20px;border-radius:9px}
+  .social{margin:8px 0 2px}
+  .social a{display:inline-block;margin-right:12px;font-weight:600}
+  .tagline{font-style:italic;color:var(--green-dark);margin-top:10px;font-size:14px}
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
-    <div class="brand"><div class="logo">JKV <span>GLOBAL</span></div><div class="tag">Client Survey</div></div>
-    <h1 id="greeting">How are we doing?</h1>
-    <p>Tap your answers below – your choices are saved automatically. It takes about 2 minutes.</p>
+    <div class="brand"><div class="logo">JKV <span>GLOBAL</span></div><div class="tag">Client Experience Survey</div></div>
+    <h1 id="greeting">Help Us Improve Your Trading Experience</h1>
+    <p>About 3 minutes · your answers are saved as you go.</p>
   </header>
 
   <div id="survey" class="hidden">
+    <section class="card intro">
+      <p id="dear">Dear Client,</p>
+      <p>At JKV Global, we are committed to delivering a reliable, competitive and transparent Forex and CFD trading experience. As we continue strengthening our services and enhancing our trading environment, your feedback is important in helping us understand your expectations and identify areas for improvement.</p>
+      <p>Your responses will help us improve our execution quality, trading conditions, platform experience and overall client support.</p>
+      <div class="credit">
+        <b class="big">Complete the survey and receive a $50 trading credit</b>
+        <p>As a token of appreciation, <b>eligible clients with KYC-approved accounts will be entitled to receive a $50 tradable bonus</b>, subject to the applicable Terms and Conditions.</p>
+        <p>Clients whose KYC verification is still pending are also welcome to participate. However, the trading credit will be available only to clients with KYC-approved accounts.</p>
+        <p><b>Once you have completed the survey, please contact JKV Global Support to request your $50 trading credit.</b> <a href="#terms" onclick="document.getElementById('terms').open=true">Terms and Conditions</a></p>
+      </div>
+    </section>
+
     <div class="progress">
       <div class="bar"><i id="barFill"></i></div>
-      <div class="progress-row"><span id="progressText">0 of 0 answered</span><span id="saved" class="saved"></span></div>
+      <div class="progress-row"><span id="progressText">0 of 12 answered</span><span id="saved" class="saved"></span></div>
     </div>
     <div id="questions"></div>
   </div>
 
   <div id="thanks" class="card thanks center hidden">
     <div class="tick">✓</div>
-    <h2 style="font-size:22px;margin:0 0 8px;color:var(--ink)">Thank you for your feedback!</h2>
-    <p class="note" style="font-size:15px;line-height:1.6">Your answers have been received and will be reviewed by our management team. We'll share the improvements we make.</p>
+    <h2 style="font-size:22px;margin:0 0 8px;color:var(--ink)">Thank You for Your Feedback</h2>
+    <p class="note" style="font-size:15px;line-height:1.6">Thank you for taking the time to complete the JKV Global Client Experience Survey. Your feedback will help us better understand your needs and shape improvements to our trading services.</p>
+    <div class="credit" style="text-align:left">
+      <b class="big">Request your $50 trading credit</b>
+      <p><b>To request your $50 trading credit, please contact JKV Global Support.</b> The credit is available only for eligible KYC-approved accounts and is subject to the applicable Terms and Conditions.</p>
+      <a class="support-btn js-support" href="#">Contact JKV Global Support</a>
+    </div>
+    <p class="note" style="font-size:14.5px;margin-top:14px">We appreciate your time and look forward to serving you better.</p>
+    <div class="tagline"><b>JKV Global</b> · Your Trading Experience Matters.</div>
     <div class="trade">
       <h3>Ready for your next trade?</h3>
       <p>Log in to your account and access the markets in seconds.</p>
@@ -110,7 +148,12 @@
   <div id="already" class="card thanks center hidden">
     <div class="tick">✓</div>
     <h2 style="font-size:22px;margin:0 0 8px;color:var(--ink)">Response already submitted</h2>
-    <p class="note" style="font-size:15px;line-height:1.6">Thank you – we have already received your feedback. Each client can submit the survey once. Our management team is reviewing all responses.</p>
+    <p class="note" style="font-size:15px;line-height:1.6">Thank you – we have already received your feedback. Each client can submit the survey once.</p>
+    <div class="credit" style="text-align:left">
+      <b class="big">Haven't requested your $50 trading credit yet?</b>
+      <p>Please contact JKV Global Support. The credit is available only for eligible KYC-approved accounts and is subject to the applicable Terms and Conditions.</p>
+      <a class="support-btn js-support" href="#">Contact JKV Global Support</a>
+    </div>
     <div class="trade">
       <h3>Ready for your next trade?</h3>
       <p>Log in to your account and access the markets in seconds.</p>
@@ -127,7 +170,21 @@
     <p class="note" style="font-size:15px">This survey is personal to each JKV Global client. Open it using the buttons in the email we sent you.</p>
   </div>
 
+  <details class="terms" id="terms">
+    <summary>$50 Trading Credit – Terms and Conditions</summary>
+    <ol>
+      <li>The $50 trading credit is available only to eligible clients with KYC-approved accounts.</li>
+      <li>Clients with pending or incomplete KYC may complete the survey but will not qualify for the credit unless their account receives KYC approval and meets the applicable eligibility requirements.</li>
+      <li>Upon completing the survey, eligible clients must contact JKV Global Support to request the credit.</li>
+      <li>The credit is subject to account verification, eligibility checks and JKV Global's applicable bonus and trading-credit terms.</li>
+      <li>The credit is a tradable bonus and is not a cash deposit or a direct cash withdrawal entitlement. Any usage, withdrawal or profit-withdrawal restrictions will be governed by the applicable bonus terms.</li>
+      <li>JKV Global reserves the right to verify survey completion and determine eligibility in accordance with its applicable policies.</li>
+      <li>Additional terms and conditions may apply.</li>
+    </ol>
+  </details>
+
   <footer>
+    <div class="social" id="social"></div>
     Your answers are linked only to your client ID and are used solely to improve our services, in line with our Privacy Policy.
     JKV Global Capital Market Services Ltd. is authorised and regulated by the Financial Services Commission (FSC), Mauritius, Licence No. GB23201820.
     Risk warning: CFDs and forex are leveraged products and carry a high level of risk to your capital.
@@ -137,53 +194,57 @@
 
 <div class="submit-bar hidden" id="submitBar">
   <div class="inner">
-    <small id="submitHint">Answer as many questions as you like, then submit.</small>
+    <small id="submitHint">Please answer all questions. Question 13 is optional.</small>
     <button class="btn btn-green" id="submitBtn">Submit</button>
   </div>
 </div>
 
 <script>
 /* ────────────────────────────────────────────────────────────────────────────
-   PASTE your Apps Script Web app URL (ends in /exec) between the quotes below.
+   SETTINGS – edit these lines only
    ──────────────────────────────────────────────────────────────────────────── */
-const API_URL = "https://script.google.com/macros/s/AKfycbzObcRuuT1KhJN6IPcQ8Q1-SGc8kZ-1IXL0IYdYsBcrjdyrTURUYGWqgtTijWxv-c4P/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbzObcRuuT1KhJN6IPcQ8Q1-SGc8kZ-1IXL0IYdYsBcrjdyrTURUYGWqgtTijWxv-c4P/exec";      // Apps Script Web app URL (ends in /exec)
+const SUPPORT_EMAIL = "support@jkvglobal.com";               // where clients request the $50 credit
+const SOCIAL_LINKS = [                                       // leave a URL empty "" to hide it
+  ["Instagram", "https://www.instagram.com/jkvglobal_official/"],
+  ["LinkedIn",  "PASTE_LINKEDIN_URL"]
+];
 
-/* Question setup – order and codes must match JKV_Survey_Builder.gs and send_survey.py */
+/* ── Questions – keys and order must match JKV_Survey_Builder.gs ── */
+const L_POOR = ["Very Poor","Poor","Below Expectations","Fair","Average","Satisfactory","Good","Very Good","Excellent","Exceptional"];
+const L_SAT  = ["Very Dissatisfied","Dissatisfied","Below Expectations","Fair","Neutral","Satisfactory","Satisfied","Very Satisfied","Extremely Satisfied","Exceptional"];
+const L_EASY = ["Very Difficult","Difficult","Below Expectations","Fair","Average","Satisfactory","Easy","Very Easy","Extremely Easy","Exceptional"];
+const L_ATTR = ["Not Attractive","Slightly Attractive","Below Expectations","Fair","Average","Moderately Attractive","Good","Very Attractive","Highly Attractive","Exceptional"];
+const L_OVER = ["Very Dissatisfied","Dissatisfied","Below Expectations","Fair","Average","Satisfactory","Satisfied","Very Satisfied","Extremely Satisfied","Completely Satisfied"];
+const NA_LABEL = "Not Applicable / Unable to Assess";
+
 const SECTIONS = [
-  { step: 1, title: "About you", questions: [
-    { k: "st", type: "single", title: "Which best describes you today?", options: [
-      ["active", "I trade actively with JKV Global"],
-      ["lapsed", "I have traded before, but not recently"],
-      ["new", "I completed my KYC but have never traded"],
-      ["pending", "I opened an account but my KYC is still pending"] ] } ] },
-  { step: 2, title: "Your trading experience", trading: true,
-    note: "Rate from 1 (Very Poor) to 10 (Excellent). Tap N/A if it doesn't apply.", questions: [
-    { k: "p0", type: "scale", na: true, title: "Trading Spreads", help: "How competitive are our bid/ask spreads?" },
-    { k: "p1", type: "scale", na: true, title: "Execution Speed", help: "How fast are your orders executed?" },
-    { k: "p2", type: "scale", na: true, title: "Execution Quality", help: "Order fill rate, requotes and reliability." },
-    { k: "p3", type: "scale", na: true, title: "Slippage", help: "How well do we manage slippage? (10 = rarely / minimal impact)" },
-    { k: "p4", type: "scale", na: true, title: "Trading Conditions", help: "Leverage, swaps, commissions and overall trading costs." } ] },
-  { step: 3, title: "Platform, offers & brand", note: "Rate from 1 (Very Poor) to 10 (Excellent).", questions: [
-    { k: "p5", type: "scale", na: true, title: "Trading Terminal", help: "Ease of using the JKV trading platform." },
-    { k: "p6", type: "scale", title: "Client Area (CRM)", help: "Navigation, account management and usability." },
-    { k: "p7", type: "scale", title: "Current Offers", help: "Attractiveness of our promotions and trading benefits." },
-    { k: "p8", type: "scale", na: true, title: "Social Media Presence", help: "Our visibility, engagement and communication." },
-    { k: "p9", type: "scale", title: "Overall Experience", help: "Your overall satisfaction with JKV Global." } ] },
-  { step: 4, title: "Your voice", questions: [
-    { k: "nps", type: "nps", title: "How likely are you to recommend JKV Global to another trader?" },
-    { k: "im", type: "multi", title: "Which improvements or features would you like to see?", help: "Select all that apply.", options: [
-      "Tighter spreads / lower commissions", "Faster deposits & withdrawals", "More local payment methods",
-      "More instruments (stocks, crypto, indices)", "Better mobile trading app", "Copy trading / social trading",
-      "Trading signals & market analysis", "Education, webinars & tutorials", "Dedicated account manager",
-      "Support in my language" ] },
-    { k: "en", type: "multi", title: "What would encourage you to start or continue trading with us?", help: "Select all that apply.", options: [
-      "Lower trading costs", "Attractive promotions & rewards", "Faster, easier funding",
-      "Learning resources to build confidence", "Personal guidance from an account manager",
-      "Copy trading options", "Trading competitions", "More trust & transparency information" ] },
-    { k: "comment", type: "text", title: "Anything else you'd like to tell us?", help: "Optional – suggestions, ideas or concerns." },
-    { k: "ok", type: "single", title: "May our team contact you about your feedback?", options: [["yes", "Yes, please"], ["no", "No, thanks"]] },
-    { k: "ct", type: "single", title: "How should we reach you?", showIf: a => a.ok === "yes",
-      options: [["email", "Email"], ["whatsapp", "WhatsApp"], ["phone", "Phone call"]] } ] }
+  { title: "About You", questions: [
+    { n: "", k: "st", type: "single", codes: ["active", "lapsed", "new", "pending"], title: "Which best describes you today?", options: [
+      "I trade actively with JKV Global", "I have traded before, but not recently",
+      "I completed my KYC but have never traded", "I opened an account but my KYC is still pending" ] } ] },
+  { title: "Your Trading Experience", trading: true, questions: [
+    { n: 1, k: "p0", type: "scale", labels: L_POOR, title: "How would you rate the competitiveness of JKV Global's bid/ask spreads across the Forex pairs and other CFD instruments you trade?" },
+    { n: 2, k: "p1", type: "scale", labels: L_SAT,  title: "How satisfied are you with the speed at which your Forex and CFD orders are executed?" },
+    { n: 3, k: "p2", type: "scale", labels: L_POOR, title: "How would you rate JKV Global's order fill rate, requote frequency and overall execution reliability under normal market conditions?" },
+    { n: 4, k: "p3", type: "scale", labels: L_POOR, title: "How effectively does JKV Global manage positive and negative slippage during order execution?" },
+    { n: 5, k: "p4", type: "scale", labels: L_POOR, title: "How competitive and transparent do you find our leverage options, swap rates, commissions and overall trading costs?" } ] },
+  { title: "Platform and Account Experience", questions: [
+    { n: 6, k: "p5", type: "scale", labels: L_POOR, title: "How would you rate the stability, responsiveness and ease of use of the JKV Global trading platform?" },
+    { n: 7, k: "p6", type: "scale", labels: L_EASY, title: "How easy is it to navigate our client portal, manage your trading account and access essential account functions?" } ] },
+  { title: "Communication and Client Engagement", questions: [
+    { n: 8, k: "p7", type: "scale", labels: L_ATTR, title: "How attractive and relevant do you find JKV Global's promotions, trading incentives and client benefits?" },
+    { n: 9, k: "p8", type: "scale", labels: L_POOR, title: "How effectively does JKV Global communicate trading-related updates, account information, product changes and important announcements?" } ] },
+  { title: "Overall Satisfaction and Expectations", questions: [
+    { n: 10, k: "p9", type: "scale", labels: L_OVER, title: "Taking into account execution quality, trading costs, platform performance and client support, how satisfied are you with JKV Global overall?" },
+    { n: 11, k: "im", type: "single", other: 10, title: "What is the single most important improvement you would like to see from JKV Global?", help: "Select one option.", options: [
+      "More competitive Forex and CFD spreads", "Faster order execution", "Improved execution reliability and fewer requotes",
+      "Better slippage management", "More competitive commissions, swaps and trading costs", "Improved trading platform stability",
+      "Easier account management and client portal access", "Faster and more effective customer support",
+      "More relevant promotions and trading benefits", "More regular communication and market-related updates", "Other" ] },
+    { n: 12, k: "tm", type: "single", title: "Would you consider trading with JKV Global more actively if we address your key concerns and improve the areas identified in this survey?", options: [
+      "Yes, definitely", "Yes, depending on the improvements", "Possibly", "Not at this stage", "No" ] },
+    { n: 13, k: "comment", type: "text", optional: true, title: "Is there any additional feedback or suggestion you would like to share with JKV Global?", help: "Optional: Please share any comments that could help us improve your trading experience." } ] }
 ];
 
 const params = new URLSearchParams(location.search);
@@ -191,61 +252,81 @@ const CID = params.get("cid") || "";
 const SIG = params.get("s") || "";
 const NAME = (params.get("n") || "").trim();
 let answers = {};
-let saveTimer = null, saveChain = Promise.resolve(), submitting = false, submitted = false;
-const touched = new Set();   // keys the client changed on this page
+let saveTimer = null, saveChain = Promise.resolve(), submitting = false, submitted = false, showMissing = false, lastMissing = [];
 
 const $ = id => document.getElementById(id);
+const LOCAL_KEY = "jkv_survey_v2_" + CID;
+function saveLocal() { try { localStorage.setItem(LOCAL_KEY, JSON.stringify(answers)); } catch (e) {} }
+function loadLocal() { try { return JSON.parse(localStorage.getItem(LOCAL_KEY) || "{}") || {}; } catch (e) { return {}; } }
+function clearLocal() { try { localStorage.removeItem(LOCAL_KEY); } catch (e) {} }
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-const tone = (n, nps) => n === "na" ? "na" : nps ? (n <= 6 ? "low" : n <= 8 ? "mid" : "high") : (n <= 4 ? "low" : n <= 7 ? "mid" : "high");
-const allQuestions = () => SECTIONS.flatMap(s => s.questions.map(q => Object.assign({ section: s }, q)));
+const tone = n => n === "na" ? "na" : n <= 4 ? "low" : n <= 7 ? "mid" : "high";
+const allQuestions = () => SECTIONS.flatMap(s => s.questions);
+const isAnswered = q => answers[q.k] !== undefined && answers[q.k] !== null && answers[q.k] !== "";
 const notTraded = () => answers.st === "new" || answers.st === "pending";
+const skippedSection = sec => sec.trading && notTraded();
+const required = () => SECTIONS.filter(sec => !skippedSection(sec)).flatMap(s => s.questions).filter(q => !q.optional);
 
 /* ── Render ── */
 function render() {
-  const html = SECTIONS.map(sec => {
-    const skip = sec.trading && notTraded();
-    const qs = sec.questions.map(q => renderQ(q)).join("");
-    return `<section class="card">
-      <div class="step">Step ${sec.step} of ${SECTIONS.length}</div>
+  $("questions").innerHTML = SECTIONS.map((sec, i) => `<section class="card">
+      <div class="step">Step ${i + 1} of ${SECTIONS.length}</div>
       <h2>${sec.title}</h2>
-      ${sec.note && !skip ? `<p class="note">${sec.note}</p>` : ""}
-      ${skip ? `<div class="skipped">As you haven't started trading yet, this step is skipped. You can change your answer in Step 1 at any time.</div>`
-             : qs}
-    </section>`;
-  }).join("");
-  $("questions").innerHTML = html;
+      ${skippedSection(sec)
+        ? `<div class="skipped">As you haven't started trading yet, questions 1–5 are skipped. You can change your answer in Step 1 at any time.</div>`
+        : sec.questions.map(renderQ).join("")}
+    </section>`).join("");
   updateProgress();
 }
 
 function renderQ(q) {
-  if (q.showIf && !q.showIf(answers)) return "";
   const v = answers[q.k];
   let body = "";
-  if (q.type === "scale" || q.type === "nps") {
-    const nps = q.type === "nps";
-    const nums = []; for (let n = nps ? 0 : 1; n <= 10; n++) nums.push(n);
-    if (q.na) nums.push("na");
-    body = `<div class="scale" style="grid-template-columns:repeat(${nums.length},1fr)">` +
-      nums.map(n => `<button type="button" class="t-${tone(n, nps)}" data-k="${q.k}" data-v="${n}" aria-pressed="${v === n}">${n === "na" ? "N/A" : n}</button>`).join("") +
-      `</div><div class="scale-labels"><span>${nps ? "Not likely" : "Very Poor"}</span><span>${nps ? "Extremely likely" : "Excellent"}</span></div>`;
+  if (q.type === "scale") {
+    const nums = [1,2,3,4,5,6,7,8,9,10,"na"];
+    const chosen = v === "na" ? NA_LABEL : (typeof v === "number" ? `${v} – ${q.labels[v - 1]}` : "");
+    body = `<div class="scale" style="grid-template-columns:repeat(11,1fr)">` +
+      nums.map(n => `<button type="button" class="t-${tone(n)}" data-k="${q.k}" data-v="${n}" aria-pressed="${v === n}" title="${esc(n === "na" ? NA_LABEL : n + " – " + q.labels[n - 1])}">${n === "na" ? "N/A" : n}</button>`).join("") +
+      `</div><div class="scale-labels"><span>1 – ${esc(q.labels[0])}</span><span>10 – ${esc(q.labels[9])}</span></div>` +
+      `<div class="chosen">${chosen ? "Your answer: " + esc(chosen) : ""}</div>`;
   } else if (q.type === "single") {
-    body = `<div class="options">` + q.options.map(([code, label]) =>
-      `<button type="button" class="opt" data-k="${q.k}" data-v="${code}" aria-pressed="${v === code}">${esc(label)}</button>`).join("") + `</div>`;
-  } else if (q.type === "multi") {
-    const sel = Array.isArray(v) ? v : [];
-    body = `<div class="chips">` + q.options.map((label, i) =>
-      `<button type="button" class="chip" data-k="${q.k}" data-v="${i}" aria-pressed="${sel.includes(i)}">${esc(label)}</button>`).join("") + `</div>`;
+    body = `<div class="options">` + q.options.map((label, i) => {
+      const val = q.codes ? q.codes[i] : i;
+      return `<button type="button" class="opt" data-k="${q.k}" data-v="${val}" aria-pressed="${v === val}">${esc(label)}</button>`;
+    }).join("") + `</div>`;
+    if (q.other !== undefined && v === q.other) {
+      body += `<input class="other" id="imOther" maxlength="500" placeholder="Please tell us which improvement (optional)" value="${esc(answers.imOther || "")}">`;
+    }
   } else if (q.type === "text") {
-    body = `<textarea id="comment" maxlength="1500" placeholder="Type here…">${esc(v || "")}</textarea>`;
+    body = `<textarea id="comment" maxlength="2000" placeholder="Type here…">${esc(v || "")}</textarea>`;
   }
-  return `<div class="q"><div class="q-title">${esc(q.title)}</div>${q.help ? `<div class="q-help">${esc(q.help)}</div>` : ""}${body}</div>`;
+  const missing = showMissing && !q.optional && !isAnswered(q);
+  return `<div class="q${missing ? " missing" : ""}" id="q-${q.k}">
+    <div class="q-title">${q.n ? `<span class="qnum">${q.n}.</span>` : ""}${esc(q.title)}${q.optional ? ' <span class="optional">(optional)</span>' : ""}</div>
+    ${q.help ? `<div class="q-help">${esc(q.help)}</div>` : '<div style="height:8px"></div>'}
+    ${body}
+    ${missing ? '<div class="req">Please answer this question.</div>' : ""}
+  </div>`;
+}
+
+function missingText(list) {
+  const step1 = list.some(q => !q.n);
+  const nums = list.filter(q => q.n).map(q => q.n);
+  const parts = [];
+  if (step1) parts.push("Step 1 (About you)");
+  if (nums.length) parts.push((nums.length > 1 ? "questions " : "question ") + nums.join(", "));
+  return `Please answer ${parts.join(" and ")}${nums.length ? " (you can choose N/A)" : ""}.`;
 }
 
 function updateProgress() {
-  const qs = allQuestions().filter(q => !(q.section.trading && notTraded()) && !(q.showIf && !q.showIf(answers)) && q.type !== "text");
-  const done = qs.filter(q => { const v = answers[q.k]; return Array.isArray(v) ? v.length > 0 : v !== undefined && v !== null && v !== ""; }).length;
-  $("progressText").textContent = `${done} of ${qs.length} answered`;
-  $("barFill").style.width = (qs.length ? Math.round(done / qs.length * 100) : 0) + "%";
+  const req = required();
+  const done = req.filter(isAnswered).length;
+  $("progressText").textContent = `${done} of ${req.length} answered`;
+  const left = req.filter(q => !isAnswered(q));
+  if (!left.length) $("submitHint").textContent = "All set – press Submit to send your answers.";
+  else if (showMissing) $("submitHint").textContent = missingText(left);
+  else $("submitHint").textContent = "Please answer all questions. Question 13 is optional.";
+  $("barFill").style.width = Math.round(done / req.length * 100) + "%";
 }
 
 /* ── Interaction ── */
@@ -254,35 +335,30 @@ document.addEventListener("click", e => {
   if (!b) return;
   const k = b.dataset.k, raw = b.dataset.v;
   const q = allQuestions().find(x => x.k === k);
-  if (q.type === "multi") {
-    const i = Number(raw), list = Array.isArray(answers[k]) ? answers[k].slice() : [];
-    answers[k] = list.includes(i) ? list.filter(x => x !== i) : list.concat(i);
-  } else if (q.type === "scale" || q.type === "nps") {
-    answers[k] = raw === "na" ? "na" : Number(raw);
-  } else {
-    answers[k] = raw;
-  }
-  touched.add(k);
+  if (q.type === "scale") answers[k] = raw === "na" ? "na" : Number(raw);
+  else answers[k] = q.codes ? raw : Number(raw);
   const y = window.scrollY;
   render();
   window.scrollTo(0, y);
+  if (k === "im" && answers.im === q.other) { const o = $("imOther"); if (o) o.focus({ preventScroll: true }); }
   queueSave();
 });
 
 document.addEventListener("input", e => {
-  if (e.target.id === "comment") { answers.comment = e.target.value; touched.add("comment"); queueSave(1500); }
+  if (e.target.id === "comment") { answers.comment = e.target.value; queueSave(800); }
+  if (e.target.id === "imOther") { answers.imOther = e.target.value; queueSave(800); }
 });
 
 /* ── Saving ── */
 function setSaved(text, cls) { const el = $("saved"); el.textContent = text; el.className = "saved " + (cls || ""); }
 
 function queueSave(delay) {
+  saveLocal();                                   // instant copy on this device
   clearTimeout(saveTimer);
-  saveTimer = setTimeout(() => save(false), delay || 700);
+  saveTimer = setTimeout(() => save(false), delay || 400);
 }
 
-// Saves run one after another (never two at once). Submit waits for any auto-save
-// that is still running, then sends the final answers – so one click is always enough.
+// Saves run one after another; Submit waits for any running auto-save, so one click is enough.
 function save(final) {
   const run = saveChain.then(() => doSave(final));
   saveChain = run.catch(() => {});
@@ -290,14 +366,15 @@ function save(final) {
 }
 
 async function doSave(final) {
-  if (submitted || (submitting && !final)) return true;   // nothing to auto-save once submitting
+  if (submitted || (submitting && !final)) return true;
   setSaved(final ? "Submitting…" : "Saving…");
   try {
     const res = await fetch(API_URL, { method: "POST", body: JSON.stringify({ cid: CID, s: SIG, answers, final }) });
     const data = await res.json();
-    if (data.error === "already_submitted") { submitted = true; showOnly("already"); return false; }
+    if (data.error === "already_submitted") { submitted = true; clearLocal(); showOnly("already"); return false; }
+    if (data.error === "incomplete") { lastMissing = data.missing || []; setSaved(""); return false; }
     if (!data.ok) throw new Error(data.error || "save failed");
-    if (final) submitted = true;
+    if (final) { submitted = true; clearLocal(); }
     setSaved("All changes saved ✓", "ok");
     return true;
   } catch (err) {
@@ -307,21 +384,36 @@ async function doSave(final) {
 }
 
 $("submitBtn").addEventListener("click", async () => {
-  if (submitting || submitted) return;          // ignore double taps
+  if (submitting || submitted) return;
+  if ($("comment")) answers.comment = $("comment").value;
+  if ($("imOther")) answers.imOther = $("imOther").value;
+
+  const missing = required().filter(q => !isAnswered(q));
+  if (missing.length) {
+    showMissing = true;
+    render();
+    $("submitHint").textContent = missingText(missing);
+    $("q-" + missing[0].k).scrollIntoView({ behavior: "smooth", block: "center" });
+    return;
+  }
+
   submitting = true;
   clearTimeout(saveTimer);
   const btn = $("submitBtn");
   btn.disabled = true; btn.textContent = "Submitting…";
-  if (document.getElementById("comment")) answers.comment = document.getElementById("comment").value;
   let ok = await save(true);
   if (!ok && !submitted) { await new Promise(r => setTimeout(r, 1500)); ok = await save(true); }
   submitting = false;
   btn.disabled = false; btn.textContent = "Submit";
-  if (ok) {
-    showOnly("thanks");
-  } else if (!submitted) {
-    $("submitHint").textContent = "We couldn't submit just now. Please check your connection and try again.";
+  if (ok) showOnly("thanks");
+  else if (lastMissing.length) {                  // the server found unanswered questions
+    const qs = lastMissing.map(k => allQuestions().find(q => q.k === k)).filter(Boolean);
+    lastMissing = [];
+    showMissing = true; render();
+    $("submitHint").textContent = missingText(qs);
+    if (qs[0]) $("q-" + qs[0].k).scrollIntoView({ behavior: "smooth", block: "center" });
   }
+  else if (!submitted) $("submitHint").textContent = "We couldn't submit just now. Please check your connection and try again.";
 });
 
 // Show one screen: "survey" (with the Submit bar), "thanks", "already", "invalid" or "loading"
@@ -333,39 +425,31 @@ function showOnly(name) {
 
 /* ── Start ── */
 (function init() {
-  if (!/^[A-Za-z0-9_-]{1,40}$/.test(CID) || !/^[0-9a-f]{16}$/.test(SIG)) { showOnly("invalid"); return; }
-  if (NAME) $("greeting").textContent = `How are we doing, ${NAME}?`;
+  // Support links: email with the client ID already filled in
+  const mail = `mailto:${SUPPORT_EMAIL}?subject=${encodeURIComponent("Survey completed – $50 trading credit request (Client ID " + CID + ")")}` +
+               `&body=${encodeURIComponent("Hello JKV Global Support,\n\nI have completed the Client Experience Survey and would like to request my $50 trading credit.\n\nClient ID: " + CID + "\n\nThank you.")}`;
+  document.querySelectorAll(".js-support").forEach(a => { a.href = mail; a.textContent = "Contact JKV Global Support (" + SUPPORT_EMAIL + ")"; });
+  $("social").innerHTML = SOCIAL_LINKS.filter(([, u]) => /^https?:\/\//.test(u))
+    .map(([n, u]) => `<a href="${esc(u)}" target="_blank" rel="noopener">${esc(n)}</a>`).join("");
 
-  // The answer tapped in the email
+  if (!/^[A-Za-z0-9_-]{1,40}$/.test(CID) || !/^[0-9a-f]{16}$/.test(SIG)) { showOnly("invalid"); return; }
+  if (NAME) { $("dear").textContent = `Dear ${NAME},`; }
+
+  // The answer tapped in the email (e.g. the overall-satisfaction circles)
   const q = params.get("q"), v = params.get("v");
   const tapped = {};
-  if (q && v !== null) {
-    if (q === "im" || q === "en") tapped[q] = [Number(v)];
-    else if (/^p\d$/.test(q) || q === "nps") tapped[q] = v === "na" ? "na" : Number(v);
-    else if (q !== "open") tapped[q] = v;
-  }
+  if (q && v !== null && /^p\d$/.test(q)) tapped[q] = v === "na" ? "na" : Number(v);
 
   function openSurvey(saved) {
-    // saved answers < answer tapped in the email
-    const merged = Object.assign({}, saved || {});
-    Object.keys(tapped).forEach(k => {
-      merged[k] = (k === "im" || k === "en")
-        ? Array.from(new Set([...((saved || {})[k] || []), ...tapped[k]]))
-        : tapped[k];
-    });
-    answers = merged;
+    answers = Object.assign({}, saved || {}, loadLocal(), tapped);   // device copy is the most recent
     render();
     showOnly("survey");
-    if (Object.keys(tapped).length) save(false);
-    if (q && q !== "open") {
-      setTimeout(() => {
-        const el = document.querySelector(`[data-k="${q}"]`);
-        if (el) el.closest(".q").scrollIntoView({ behavior: "smooth", block: "center" });
-      }, 150);
+    if (Object.keys(tapped).length || Object.keys(loadLocal()).length) save(false);
+    if (Object.keys(tapped).length) {
+      setTimeout(() => { const el = $("q-" + q); if (el) el.scrollIntoView({ behavior: "smooth", block: "center" }); }, 150);
     }
   }
 
-  // First check with the server: is the link valid, and has this client already submitted?
   fetch(`${API_URL}?load=1&cid=${encodeURIComponent(CID)}&s=${SIG}`)
     .then(r => r.json())
     .then(d => {
@@ -373,7 +457,7 @@ function showOnly(name) {
       if (d.submitted) { showOnly("already"); return; }
       openSurvey(d.answers);
     })
-    .catch(() => openSurvey({}));   // offline check failed – the server still blocks a second submission
+    .catch(() => openSurvey({}));   // the server still blocks a second submission
 })();
 </script>
 </body>
