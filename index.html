@@ -6,7 +6,7 @@
 <meta name="robots" content="noindex, nofollow">
 <title>JKV Global – Client Experience Survey</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --green:#127143; --green-dark:#0b3d2e; --gold:#F5B647; --ink:#1d2622; --muted:#6b7772;
@@ -20,8 +20,6 @@
   .wrap{max-width:640px;margin:0 auto;padding:0 12px 120px}
   header{background:linear-gradient(135deg,var(--green-dark),var(--green));color:#fff;border-radius:0 0 16px 16px;padding:22px 20px 26px;margin:0 -12px 16px}
   @media(min-width:664px){header{margin:16px 0 16px;border-radius:16px}}
-  .brand{display:flex;justify-content:space-between;align-items:center}
-  .logo{font-weight:700;font-size:20px;letter-spacing:.5px}.logo span{color:var(--gold)}
   .tag{font-size:11px;font-weight:700;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase}
   h1{font-size:24px;line-height:1.3;margin:18px 0 6px}
   header p{margin:0;color:#d6eadf;font-size:15px;line-height:1.5}
@@ -98,44 +96,37 @@
   .social a{display:inline-block;line-height:0}
   .social{align-items:center;flex-wrap:nowrap}
   .social img{width:28px;height:28px;border-radius:6px;display:block}
-  .social .foot-logo{margin-right:6px}
-  .social .foot-logo img{width:34px;height:36px;border-radius:0}
-  .logo{display:flex;align-items:center;white-space:nowrap}
-  .logo-img{width:44px;height:44px;margin-right:10px;flex:none}
-  .logo .lw{color:#fff}
-  .brand{gap:10px}.brand .tag{text-align:right;white-space:nowrap}
-  @media(max-width:380px){.logo{font-size:18px}.logo-img{width:38px;height:38px;margin-right:8px}.brand .tag{font-size:10px;letter-spacing:1px}}
   .risk-note{margin:12px 0 0;padding-top:10px;border-top:1px solid var(--line);font-style:italic}
   .opt-multi::before{border-radius:4px!important}
   .opt-multi[aria-pressed=true]::before{content:"✓";color:var(--green);font-size:12px;font-weight:700;line-height:12px;text-align:center;background:#fff;box-shadow:none!important}
   .tagline{font-style:italic;color:var(--green-dark);margin-top:10px;font-size:14px}
-  body{font-family:Inter,"Noto Sans Devanagari",Arial,Helvetica,sans-serif}
-  .langbar{display:flex;gap:6px;margin-top:16px;flex-wrap:wrap}
-  .langbar button{font:inherit;font-size:13px;font-weight:600;padding:6px 12px;border-radius:16px;border:1.5px solid rgba(255,255,255,.55);background:transparent;color:#fff;cursor:pointer}
-  .langbar button[aria-pressed=true]{background:var(--gold);border-color:var(--gold);color:var(--green-dark)}
-  .prevail{font-size:12px;font-style:italic;margin:8px 0 0}
-  :lang(hi) .tag,:lang(mr) .tag,:lang(hi) .step,:lang(mr) .step{letter-spacing:.3px}
+  header.banner{padding:0;background:none;border-radius:0;overflow:hidden;margin:0 -12px 8px}
+  header.banner img{display:block;width:100%;height:auto}
+  @media(min-width:664px){header.banner{margin:16px 0 8px;border-radius:16px}}
+  .sub-line{margin:0 0 14px;font-size:13px;color:var(--muted);text-align:center}
+  .foot-banner{border-radius:14px;overflow:hidden;margin:0 0 14px;background:#094043}
+  .foot-banner img.fb{display:block;width:100%;height:auto}
+  .foot-banner .social{justify-content:center;margin:0;padding:10px 0 12px;gap:14px}
+  .credit .credit-key{font-size:16px;line-height:1.45;font-weight:700;color:var(--green-dark)}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <header>
-    <div class="brand"><div class="logo"><img class="logo-img" src="icons/jkv-logo-badge.png" alt="JKV Global logo" width="44" height="44"><span class="lw">JKV</span>&nbsp;<span>GLOBAL</span></div><div class="tag" data-i18n="tag">Client Survey</div></div>
-    <h1 id="greeting" data-i18n="h1">Help Us Improve Your Trading Experience</h1>
-    <p data-i18n="sub">About 3 minutes · your answers are saved as you go.</p>
-    <div class="langbar" id="langBar" role="group" aria-label="Language"></div>
+  <header class="banner">
+    <img src="icons/header-banner.jpg" alt="JKV Global – Your feedback matters: help us improve your trading experience" width="1200" height="193">
   </header>
+  <p class="sub-line">About 3 minutes · your answers are saved as you go.</p>
 
   <div id="survey" class="hidden">
     <section class="card intro">
       <p id="dear">Dear Client,</p>
-      <p data-i18n="intro1">At JKV Global, we are committed to delivering a reliable, competitive and transparent Forex and CFD trading experience. As we continue strengthening our services and enhancing our trading environment, your feedback is important in helping us understand your expectations and identify areas for improvement.</p>
-      <p data-i18n="intro2">Your responses will help us improve our execution quality, trading conditions, platform experience and overall client support.</p>
+      <p>At JKV Global, we are committed to delivering a reliable, competitive and transparent Forex and CFD trading experience. As we continue strengthening our services and enhancing our trading environment, your feedback is important in helping us understand your expectations and identify areas for improvement.</p>
+      <p>Your responses will help us improve our execution quality, trading conditions, platform experience and overall client support.</p>
       <div class="credit">
-        <b class="big" data-i18n="creditTitle">Complete the survey and receive a $50 trading credit</b>
-        <p data-i18n="credit1">As a token of appreciation, <b>eligible clients with KYC-approved accounts will be entitled to receive a $50 tradable bonus</b>, subject to the applicable Terms and Conditions.</p>
-        <p data-i18n="credit2">Clients whose KYC verification is still pending are also welcome to participate. However, the trading credit will be available only to clients with KYC-approved accounts.</p>
-        <p><span data-i18n="credit3"><b>Once you have completed the survey, please contact JKV Global Support to request your $50 trading credit.</b></span> <a href="#terms" data-i18n="termsLink" onclick="document.getElementById('terms').open=true">Terms and Conditions</a></p>
+        <b class="big">Complete the survey and unlock a $100 tradable bonus</b>
+        <p>As a token of appreciation, <span class="credit-key">eligible clients with KYC-approved accounts can receive a $100 tradable bonus upon making a minimum deposit of $50</span>, after successfully completing and submitting the survey, subject to the applicable Terms and Conditions.</p>
+        <p>Clients whose KYC verification is still pending are also welcome to participate. However, the bonus will be available only to clients with KYC-approved accounts who meet the eligibility and deposit requirements.</p>
+        <p><b>Once you have completed and submitted the survey and made the qualifying deposit, please contact JKV Global Support to claim your $100 tradable bonus.</b> <a href="#terms" onclick="document.getElementById('terms').open=true">Terms and Conditions</a></p>
       </div>
     </section>
 
@@ -148,68 +139,72 @@
 
   <div id="thanks" class="card thanks center hidden">
     <div class="tick">✓</div>
-    <h2 style="font-size:22px;margin:0 0 8px;color:var(--ink)" data-i18n="thanksTitle">Thank You for Your Feedback</h2>
-    <p class="note" style="font-size:15px;line-height:1.6" data-i18n="thanksBody">Thank you for taking the time to complete the JKV Global Client Experience Survey. Your feedback will help us better understand your needs and shape improvements to our trading services.</p>
+    <h2 style="font-size:22px;margin:0 0 8px;color:var(--ink)">Thank You for Your Feedback</h2>
+    <p class="note" style="font-size:15px;line-height:1.6">Thank you for taking the time to complete the JKV Global Client Experience Survey. Your feedback will help us better understand your needs and shape improvements to our trading services.</p>
     <div class="credit" style="text-align:left">
-      <b class="big" data-i18n="reqTitle">Request your $50 trading credit</b>
-      <p data-i18n="reqBody"><b>To request your $50 trading credit, please contact JKV Global Support.</b> The credit is available only for eligible KYC-approved accounts and is subject to the applicable Terms and Conditions.</p>
+      <b class="big">Claim your $100 tradable bonus</b>
+      <p><b>To claim your $100 tradable bonus, make the qualifying minimum deposit of $50 (if you haven't already) and contact JKV Global Support.</b> The bonus is available only for eligible KYC-approved accounts and is subject to the applicable Terms and Conditions.</p>
       <a class="support-btn js-support" href="#">Contact JKV Global Support</a>
     </div>
-    <p class="note" style="font-size:14.5px;margin-top:14px" data-i18n="appreciate">We appreciate your time and look forward to serving you better.</p>
-    <div class="tagline"><b>JKV Global</b> · <span data-i18n="tagline">Your Trading Experience Matters.</span></div>
+    <p class="note" style="font-size:14.5px;margin-top:14px">We appreciate your time and look forward to serving you better.</p>
+    <div class="tagline"><b>JKV Global</b> · Your Trading Experience Matters.</div>
     <div class="trade">
-      <h3 data-i18n="tradeH">Ready for your next trade?</h3>
-      <p data-i18n="tradeP">Log in to your account and access the markets in seconds.</p>
-      <a class="btn btn-gold" href="https://cabinet.jkvglobal.com/login" data-i18n="tradeBtn">TRADE NOW</a>
+      <h3>Ready for your next trade?</h3>
+      <p>Log in to your account and access the markets in seconds.</p>
+      <a class="btn btn-gold" href="https://cabinet.jkvglobal.com/login">TRADE NOW</a>
     </div>
   </div>
 
   <div id="already" class="card thanks center hidden">
     <div class="tick">✓</div>
-    <h2 style="font-size:22px;margin:0 0 8px;color:var(--ink)" data-i18n="alreadyTitle">Response already submitted</h2>
-    <p class="note" style="font-size:15px;line-height:1.6" data-i18n="alreadyBody">Thank you – we have already received your feedback. Each client can submit the survey once.</p>
+    <h2 style="font-size:22px;margin:0 0 8px;color:var(--ink)">Response already submitted</h2>
+    <p class="note" style="font-size:15px;line-height:1.6">Thank you – we have already received your feedback. Each client can submit the survey once.</p>
     <div class="credit" style="text-align:left">
-      <b class="big" data-i18n="alreadyCreditT">Haven't requested your $50 trading credit yet?</b>
-      <p data-i18n="alreadyCreditB">Please contact JKV Global Support. The credit is available only for eligible KYC-approved accounts and is subject to the applicable Terms and Conditions.</p>
+      <b class="big">Haven't claimed your $100 tradable bonus yet?</b>
+      <p>Once you have made the qualifying minimum deposit of $50, please contact JKV Global Support. The bonus is available only for eligible KYC-approved accounts and is subject to the applicable Terms and Conditions.</p>
       <a class="support-btn js-support" href="#">Contact JKV Global Support</a>
     </div>
     <div class="trade">
-      <h3 data-i18n="tradeH">Ready for your next trade?</h3>
-      <p data-i18n="tradeP">Log in to your account and access the markets in seconds.</p>
-      <a class="btn btn-gold" href="https://cabinet.jkvglobal.com/login" data-i18n="tradeBtn">TRADE NOW</a>
+      <h3>Ready for your next trade?</h3>
+      <p>Log in to your account and access the markets in seconds.</p>
+      <a class="btn btn-gold" href="https://cabinet.jkvglobal.com/login">TRADE NOW</a>
     </div>
   </div>
 
   <div id="loading" class="card thanks center">
-    <p class="note" style="font-size:15px;margin:0" data-i18n="loading">Loading your survey…</p>
+    <p class="note" style="font-size:15px;margin:0">Loading your survey…</p>
   </div>
 
   <div id="invalid" class="card thanks center hidden">
-    <h2 style="color:var(--ink)" data-i18n="invalidTitle">Please use the link in your email</h2>
-    <p class="note" style="font-size:15px" data-i18n="invalidBody">This survey is personal to each JKV Global client. Open it using the buttons in the email we sent you.</p>
+    <h2 style="color:var(--ink)">Please use the link in your email</h2>
+    <p class="note" style="font-size:15px">This survey is personal to each JKV Global client. Open it using the buttons in the email we sent you.</p>
   </div>
 
   <details class="terms" id="terms">
-    <summary data-i18n="termsTitle">$50 Trading Credit – Terms and Conditions</summary>
-    <ol id="termsList">
-      <li>The $50 trading credit is available only to eligible clients with KYC-approved accounts.</li>
-      <li>Clients with pending or incomplete KYC may complete the survey but will not qualify for the credit unless their account receives KYC approval and meets the applicable eligibility requirements.</li>
-      <li>Upon completing the survey, eligible clients must contact JKV Global Support to request the credit.</li>
-      <li>The credit is subject to account verification, eligibility checks and JKV Global's applicable bonus and trading-credit terms.</li>
-      <li>The credit is a tradable bonus. It is not a cash bonus, a cash deposit or a direct cash withdrawal entitlement, nor is it a loss-absorbing bonus. Any usage, withdrawal or profit-withdrawal restrictions will be governed by the applicable bonus terms.</li>
+    <summary>$100 Tradable Bonus – Terms and Conditions</summary>
+    <ol>
+      <li>The $100 tradable bonus is available only to eligible clients with KYC-approved accounts who successfully complete and submit the survey.</li>
+      <li>To qualify, the client must make a minimum deposit of $50 into their JKV Global trading account.</li>
+      <li>Clients with pending or incomplete KYC may complete the survey but will not qualify for the bonus unless their account receives KYC approval and meets the applicable eligibility and deposit requirements.</li>
+      <li>After completing and submitting the survey and making the qualifying deposit, eligible clients must contact JKV Global Support to claim the bonus.</li>
+      <li>The bonus is subject to account verification, eligibility checks and JKV Global's applicable bonus terms.</li>
+      <li>The bonus is a tradable bonus. It is not a cash bonus, a cash deposit or a direct cash withdrawal entitlement, nor is it a loss-absorbing bonus. Any usage, withdrawal or profit-withdrawal restrictions will be governed by the applicable bonus terms.</li>
       <li>JKV Global reserves the right to verify survey completion and determine eligibility in accordance with its applicable policies.</li>
       <li>Additional terms and conditions may apply.</li>
     </ol>
-    <p class="prevail" id="prevail"></p>
   </details>
 
-  <footer>
+  <div class="foot-banner">
+    <img class="fb" src="icons/footer-banner.jpg" alt="$100 tradable bonus with a minimum $50 deposit after completing and submitting the survey. For eligible clients with KYC-approved accounts. Terms and conditions apply." width="1200" height="171">
     <div class="social" id="social"></div>
-    <span data-i18n="privacy">Your answers are linked only to your client ID and are used solely to improve our services, in line with our Privacy Policy.</span>
-    <span data-i18n="regulated">JKV Global Capital Market Services Ltd. is authorised and regulated by the Financial Services Commission (FSC), Mauritius, Licence No. GB23201820.</span>
-    <span data-i18n="risk">Risk warning: CFDs and forex are leveraged products and carry a high level of risk to your capital.</span>
+  </div>
+
+  <footer>
+    Your answers are linked only to your client ID and are used solely to improve our services, in line with our Privacy Policy.
+    JKV Global Capital Market Services Ltd. is authorised and regulated by the Financial Services Commission (FSC), Mauritius, Licence No. GB23201820.
+    Risk warning: CFDs and forex are leveraged products and carry a high level of risk to your capital.
     <br><a href="https://www.jkvglobal.com">jkvglobal.com</a>
-    <p class="risk-note" data-i18n="riskNote">Please trade responsibly: trading decisions are made at your own discretion and risk, so only trade with funds you can afford to lose and seek independent advice if needed.</p>
+    <p class="risk-note">Please trade responsibly: trading decisions are made at your own discretion and risk, so only trade with funds you can afford to lose and seek independent advice if needed.</p>
   </footer>
 </div>
 
@@ -225,276 +220,12 @@
    SETTINGS – edit these lines only
    ──────────────────────────────────────────────────────────────────────────── */
 const API_URL = "https://script.google.com/macros/s/AKfycbzObcRuuT1KhJN6IPcQ8Q1-SGc8kZ-1IXL0IYdYsBcrjdyrTURUYGWqgtTijWxv-c4P/exec";      // Apps Script Web app URL (ends in /exec)
-const SUPPORT_EMAIL = "support@jkvglobal.com";               // where clients request the $50 credit
+const SUPPORT_EMAIL = "support@jkvglobal.com";               // where clients claim the $100 tradable bonus
 const SOCIAL_LINKS = [                                       // [name, link, icon file in the icons/ folder]
   ["Facebook",  "https://www.facebook.com/jkvglobal",            "icons/facebook.png"],
   ["Instagram", "https://www.instagram.com/jkvglobal_official/", "icons/instagram.png"],
   ["LinkedIn",  "https://www.linkedin.com/company/jkv-global/",  "icons/linkedin.png"]
 ];
-
-/* ── Languages ──────────────────────────────────────────────────────────────
-   Every page text in English, Hindi and Marathi. Answers are saved as option
-   numbers, so the Google Sheet stays in English whichever language is used.
-   To correct a translation, edit the text between the quotes only.
-   ──────────────────────────────────────────────────────────────────────────── */
-const LANGS = [["en", "English"], ["hi", "हिंदी"], ["mr", "मराठी"]];
-
-const TR = {
-en: {
-  ui: {
-    tag: "Client Survey",
-    h1: "Help Us Improve Your Trading Experience",
-    sub: "About 3 minutes · your answers are saved as you go.",
-    dear: "Dear Client,", dearName: "Dear {n},",
-    intro1: "At JKV Global, we are committed to delivering a reliable, competitive and transparent Forex and CFD trading experience. As we continue strengthening our services and enhancing our trading environment, your feedback is important in helping us understand your expectations and identify areas for improvement.",
-    intro2: "Your responses will help us improve our execution quality, trading conditions, platform experience and overall client support.",
-    creditTitle: "Complete the survey and receive a $50 trading credit",
-    credit1: "As a token of appreciation, <b>eligible clients with KYC-approved accounts will be entitled to receive a $50 tradable bonus</b>, subject to the applicable Terms and Conditions.",
-    credit2: "Clients whose KYC verification is still pending are also welcome to participate. However, the trading credit will be available only to clients with KYC-approved accounts.",
-    credit3: "<b>Once you have completed the survey, please contact JKV Global Support to request your $50 trading credit.</b>",
-    termsLink: "Terms and Conditions",
-    progress: "{d} of {t} answered",
-    saving: "Saving…", submitting: "Submitting…", saved: "All changes saved ✓", saveErr: "Couldn't save – check your connection",
-    step: "Step {i} of {n}",
-    skipped: "As you haven't started trading yet, questions 1–5 are skipped. You can change your answer in Step 1 at any time.",
-    yourAnswer: "Your answer: ",
-    selected: "{n} selected", selectMin: " – please select at least {m}",
-    otherPh: "Please tell us which other improvement (optional)",
-    typeHere: "Type here…",
-    optional: "(optional)",
-    answerThis: "Please answer this question.",
-    hintAll: "All set – press Submit to send your answers.",
-    hintDefault: "Please answer all questions. Question 13 is optional.",
-    submitFail: "We couldn't submit just now. Please check your connection and try again.",
-    submit: "Submit",
-    thanksTitle: "Thank You for Your Feedback",
-    thanksBody: "Thank you for taking the time to complete the JKV Global Client Experience Survey. Your feedback will help us better understand your needs and shape improvements to our trading services.",
-    reqTitle: "Request your $50 trading credit",
-    reqBody: "<b>To request your $50 trading credit, please contact JKV Global Support.</b> The credit is available only for eligible KYC-approved accounts and is subject to the applicable Terms and Conditions.",
-    supportBtn: "Contact JKV Global Support ({e})",
-    appreciate: "We appreciate your time and look forward to serving you better.",
-    tagline: "Your Trading Experience Matters.",
-    tradeH: "Ready for your next trade?", tradeP: "Log in to your account and access the markets in seconds.", tradeBtn: "TRADE NOW",
-    alreadyTitle: "Response already submitted",
-    alreadyBody: "Thank you – we have already received your feedback. Each client can submit the survey once.",
-    alreadyCreditT: "Haven't requested your $50 trading credit yet?",
-    alreadyCreditB: "Please contact JKV Global Support. The credit is available only for eligible KYC-approved accounts and is subject to the applicable Terms and Conditions.",
-    loading: "Loading your survey…",
-    invalidTitle: "Please use the link in your email",
-    invalidBody: "This survey is personal to each JKV Global client. Open it using the buttons in the email we sent you.",
-    termsTitle: "$50 Trading Credit – Terms and Conditions",
-    terms: [
-      "The $50 trading credit is available only to eligible clients with KYC-approved accounts.",
-      "Clients with pending or incomplete KYC may complete the survey but will not qualify for the credit unless their account receives KYC approval and meets the applicable eligibility requirements.",
-      "Upon completing the survey, eligible clients must contact JKV Global Support to request the credit.",
-      "The credit is subject to account verification, eligibility checks and JKV Global's applicable bonus and trading-credit terms.",
-      "The credit is a tradable bonus. It is not a cash bonus, a cash deposit or a direct cash withdrawal entitlement, nor is it a loss-absorbing bonus. Any usage, withdrawal or profit-withdrawal restrictions will be governed by the applicable bonus terms.",
-      "JKV Global reserves the right to verify survey completion and determine eligibility in accordance with its applicable policies.",
-      "Additional terms and conditions may apply."
-    ],
-    prevail: "",
-    privacy: "Your answers are linked only to your client ID and are used solely to improve our services, in line with our Privacy Policy.",
-    regulated: "JKV Global Capital Market Services Ltd. is authorised and regulated by the Financial Services Commission (FSC), Mauritius, Licence No. GB23201820.",
-    risk: "Risk warning: CFDs and forex are leveraged products and carry a high level of risk to your capital.",
-    riskNote: "Please trade responsibly: trading decisions are made at your own discretion and risk, so only trade with funds you can afford to lose and seek independent advice if needed.",
-    mStep1: "answer Step 1 (About you)",
-    mNums: "answer question {q} (you can choose N/A)", mNumsMany: "answer questions {q} (you can choose N/A)",
-    mMulti: "select at least {m} options in question {n}",
-    mJoin: ", and ", mPre: "Please ", mPost: "."
-  }
-},
-
-hi: {
-  ui: {
-    tag: "क्लाइंट सर्वे",
-    h1: "अपने ट्रेडिंग अनुभव को बेहतर बनाने में हमारी मदद करें",
-    sub: "लगभग 3 मिनट · आपके उत्तर साथ-साथ सेव होते रहते हैं।",
-    dear: "प्रिय ग्राहक,", dearName: "प्रिय {n},",
-    intro1: "JKV Global में, हम एक विश्वसनीय, प्रतिस्पर्धी और पारदर्शी Forex और CFD ट्रेडिंग अनुभव देने के लिए प्रतिबद्ध हैं। जैसे-जैसे हम अपनी सेवाओं को और मज़बूत बना रहे हैं और अपने ट्रेडिंग वातावरण को बेहतर कर रहे हैं, आपका फ़ीडबैक हमें आपकी अपेक्षाओं को समझने और सुधार के क्षेत्रों की पहचान करने में मदद करता है।",
-    intro2: "आपके उत्तर हमें अपनी एक्ज़ीक्यूशन गुणवत्ता, ट्रेडिंग शर्तों, प्लेटफ़ॉर्म अनुभव और समग्र क्लाइंट सपोर्ट को बेहतर बनाने में मदद करेंगे।",
-    creditTitle: "सर्वे पूरा करें और $50 ट्रेडिंग क्रेडिट पाएँ",
-    credit1: "आभार के रूप में, <b>KYC-स्वीकृत खाते वाले पात्र क्लाइंट $50 ट्रेडेबल बोनस पाने के हकदार होंगे</b>, जो लागू नियमों और शर्तों के अधीन है।",
-    credit2: "जिन क्लाइंट्स का KYC सत्यापन अभी लंबित है, वे भी इसमें भाग ले सकते हैं। हालाँकि, ट्रेडिंग क्रेडिट केवल KYC-स्वीकृत खाते वाले क्लाइंट्स को ही मिलेगा।",
-    credit3: "<b>सर्वे पूरा करने के बाद, अपना $50 ट्रेडिंग क्रेडिट पाने के लिए कृपया JKV Global Support से संपर्क करें।</b>",
-    termsLink: "नियम और शर्तें",
-    progress: "{t} में से {d} उत्तर दिए",
-    saving: "सेव हो रहा है…", submitting: "सबमिट हो रहा है…", saved: "सभी बदलाव सेव हो गए ✓", saveErr: "सेव नहीं हो सका – अपना इंटरनेट कनेक्शन जाँचें",
-    step: "चरण {i} / {n}",
-    skipped: "चूँकि आपने अभी ट्रेडिंग शुरू नहीं की है, प्रश्न 1–5 छोड़ दिए गए हैं। आप चरण 1 में अपना उत्तर कभी भी बदल सकते हैं।",
-    yourAnswer: "आपका उत्तर: ",
-    selected: "{n} चुने गए", selectMin: " – कृपया कम से कम {m} चुनें",
-    otherPh: "कृपया बताएँ कि कौन-सा अन्य सुधार (वैकल्पिक)",
-    typeHere: "यहाँ लिखें… (आप हिंदी या अंग्रेज़ी में लिख सकते हैं)",
-    optional: "(वैकल्पिक)",
-    answerThis: "कृपया इस प्रश्न का उत्तर दें।",
-    hintAll: "सब तैयार है – अपने उत्तर भेजने के लिए 'सबमिट करें' दबाएँ।",
-    hintDefault: "कृपया सभी प्रश्नों के उत्तर दें। प्रश्न 13 वैकल्पिक है।",
-    submitFail: "अभी सबमिट नहीं हो सका। कृपया अपना कनेक्शन जाँचें और फिर से प्रयास करें।",
-    submit: "सबमिट करें",
-    thanksTitle: "आपके फ़ीडबैक के लिए धन्यवाद",
-    thanksBody: "JKV Global क्लाइंट एक्सपीरियंस सर्वे पूरा करने के लिए समय निकालने के लिए धन्यवाद। आपका फ़ीडबैक हमें आपकी ज़रूरतों को बेहतर ढंग से समझने और हमारी ट्रेडिंग सेवाओं में सुधार करने में मदद करेगा।",
-    reqTitle: "अपने $50 ट्रेडिंग क्रेडिट का अनुरोध करें",
-    reqBody: "<b>अपने $50 ट्रेडिंग क्रेडिट का अनुरोध करने के लिए, कृपया JKV Global Support से संपर्क करें।</b> यह क्रेडिट केवल पात्र KYC-स्वीकृत खातों के लिए उपलब्ध है और लागू नियमों और शर्तों के अधीन है।",
-    supportBtn: "JKV Global Support से संपर्क करें ({e})",
-    appreciate: "आपके समय के लिए हम आभारी हैं और आपको और बेहतर सेवा देने के लिए तत्पर हैं।",
-    tagline: "आपका ट्रेडिंग अनुभव हमारे लिए मायने रखता है।",
-    tradeH: "अपने अगले ट्रेड के लिए तैयार हैं?", tradeP: "अपने खाते में लॉग इन करें और कुछ ही सेकंड में मार्केट तक पहुँचें।", tradeBtn: "अभी ट्रेड करें",
-    alreadyTitle: "उत्तर पहले ही सबमिट हो चुका है",
-    alreadyBody: "धन्यवाद – हमें आपका फ़ीडबैक पहले ही मिल चुका है। हर क्लाइंट यह सर्वे केवल एक बार सबमिट कर सकता है।",
-    alreadyCreditT: "क्या आपने अभी तक अपने $50 ट्रेडिंग क्रेडिट का अनुरोध नहीं किया है?",
-    alreadyCreditB: "कृपया JKV Global Support से संपर्क करें। यह क्रेडिट केवल पात्र KYC-स्वीकृत खातों के लिए उपलब्ध है और लागू नियमों और शर्तों के अधीन है।",
-    loading: "आपका सर्वे लोड हो रहा है…",
-    invalidTitle: "कृपया अपने ईमेल में दिए गए लिंक का उपयोग करें",
-    invalidBody: "यह सर्वे हर JKV Global क्लाइंट के लिए व्यक्तिगत है। कृपया इसे हमारे भेजे गए ईमेल के बटन से खोलें।",
-    termsTitle: "$50 ट्रेडिंग क्रेडिट – नियम और शर्तें",
-    terms: [
-      "$50 ट्रेडिंग क्रेडिट केवल KYC-स्वीकृत खाते वाले पात्र क्लाइंट्स के लिए उपलब्ध है।",
-      "जिन क्लाइंट्स का KYC लंबित या अधूरा है, वे सर्वे पूरा कर सकते हैं, लेकिन जब तक उनके खाते को KYC स्वीकृति नहीं मिलती और वह लागू पात्रता आवश्यकताओं को पूरा नहीं करता, तब तक वे क्रेडिट के पात्र नहीं होंगे।",
-      "सर्वे पूरा करने के बाद, पात्र क्लाइंट्स को क्रेडिट का अनुरोध करने के लिए JKV Global Support से संपर्क करना होगा।",
-      "यह क्रेडिट खाता सत्यापन, पात्रता जाँच और JKV Global की लागू बोनस व ट्रेडिंग-क्रेडिट शर्तों के अधीन है।",
-      "यह क्रेडिट एक ट्रेडेबल बोनस है। यह न तो कैश बोनस है, न कैश डिपॉज़िट और न ही सीधे नकद निकासी का अधिकार; और न ही यह लॉस-अब्ज़ॉर्बिंग (नुकसान की भरपाई करने वाला) बोनस है। इसके उपयोग, निकासी या लाभ-निकासी से जुड़े कोई भी प्रतिबंध लागू बोनस शर्तों के अनुसार होंगे।",
-      "JKV Global अपनी लागू नीतियों के अनुसार सर्वे पूरा होने का सत्यापन करने और पात्रता तय करने का अधिकार सुरक्षित रखता है।",
-      "अतिरिक्त नियम और शर्तें लागू हो सकती हैं।"
-    ],
-    prevail: "यह अनुवाद केवल सुविधा के लिए है। किसी भी अंतर की स्थिति में अंग्रेज़ी संस्करण मान्य होगा।",
-    privacy: "आपके उत्तर केवल आपकी क्लाइंट ID से जुड़े होते हैं और हमारी गोपनीयता नीति के अनुसार केवल हमारी सेवाओं को बेहतर बनाने के लिए उपयोग किए जाते हैं।",
-    regulated: "JKV Global Capital Market Services Ltd. फ़ाइनेंशियल सर्विसेज़ कमीशन (FSC), मॉरीशस द्वारा अधिकृत और विनियमित है, लाइसेंस नंबर GB23201820।",
-    risk: "जोखिम चेतावनी: CFD और Forex लीवरेज्ड उत्पाद हैं और इनमें आपकी पूंजी के लिए उच्च स्तर का जोखिम होता है।",
-    riskNote: "कृपया ज़िम्मेदारी से ट्रेड करें: ट्रेडिंग के निर्णय आपके अपने विवेक और जोखिम पर होते हैं, इसलिए केवल उतनी ही राशि से ट्रेड करें जिसे खोना आप वहन कर सकते हैं, और ज़रूरत हो तो स्वतंत्र सलाह लें।",
-    mStep1: "चरण 1 (आपके बारे में) का उत्तर दें",
-    mNums: "प्रश्न {q} का उत्तर दें (आप N/A चुन सकते हैं)", mNumsMany: "प्रश्न {q} के उत्तर दें (आप N/A चुन सकते हैं)",
-    mMulti: "प्रश्न {n} में कम से कम {m} विकल्प चुनें",
-    mJoin: ", और ", mPre: "कृपया ", mPost: "।"
-  },
-  scale: ["बहुत खराब", "खराब", "असंतोषजनक", "अपेक्षा से कम", "औसत से कम", "औसत", "अच्छा", "बहुत अच्छा", "उत्कृष्ट", "असाधारण"],
-  na: "लागू नहीं / आकलन करने में असमर्थ",
-  sections: ["आपके बारे में", "आपका ट्रेडिंग अनुभव", "प्लेटफ़ॉर्म और खाता अनुभव", "संचार और क्लाइंट जुड़ाव", "समग्र संतुष्टि और अपेक्षाएँ"],
-  q: {
-    st: { title: "आज आपके लिए कौन-सा विकल्प सबसे सही है?", options: [
-      "मैं JKV Global के साथ नियमित रूप से ट्रेड करता/करती हूँ", "मैंने पहले ट्रेड किया है, लेकिन हाल में नहीं",
-      "मैंने अपना KYC पूरा कर लिया है, लेकिन कभी ट्रेड नहीं किया", "मैंने खाता खोला है, लेकिन मेरा KYC अभी लंबित है" ] },
-    p0: { title: "आप जिन Forex पेयर्स और अन्य CFD इंस्ट्रूमेंट्स में ट्रेड करते हैं, उनमें JKV Global के bid/ask स्प्रेड कितने प्रतिस्पर्धी हैं – आप इसे कैसे रेट करेंगे?" },
-    p1: { title: "आपके Forex और CFD ऑर्डर जिस गति से एक्ज़ीक्यूट होते हैं, उससे आप कितने संतुष्ट हैं?" },
-    p2: { title: "सामान्य बाज़ार परिस्थितियों में JKV Global की ऑर्डर फ़िल रेट, रीकोट की आवृत्ति और समग्र एक्ज़ीक्यूशन विश्वसनीयता को आप कैसे रेट करेंगे?" },
-    p3: { title: "ऑर्डर एक्ज़ीक्यूशन के दौरान JKV Global पॉज़िटिव और नेगेटिव स्लिपेज को कितने प्रभावी ढंग से संभालता है?" },
-    p4: { title: "हमारे लीवरेज विकल्प, स्वैप दरें, कमीशन और कुल ट्रेडिंग लागत आपको कितनी प्रतिस्पर्धी और पारदर्शी लगती हैं?" },
-    p5: { title: "JKV Global ट्रेडिंग प्लेटफ़ॉर्म की स्थिरता, रिस्पॉन्सिवनेस और उपयोग में आसानी को आप कैसे रेट करेंगे?" },
-    p6: { title: "हमारे क्लाइंट पोर्टल को इस्तेमाल करना, अपना ट्रेडिंग खाता मैनेज करना और ज़रूरी खाता सुविधाओं तक पहुँचना कितना आसान है?" },
-    p7: { title: "JKV Global के प्रमोशन, ट्रेडिंग इंसेंटिव और क्लाइंट लाभ आपको कितने आकर्षक और प्रासंगिक लगते हैं?" },
-    p8: { title: "JKV Global ट्रेडिंग से जुड़े अपडेट, खाते की जानकारी, उत्पाद में बदलाव और महत्वपूर्ण घोषणाएँ आप तक कितने प्रभावी ढंग से पहुँचाता है?" },
-    p9: { title: "एक्ज़ीक्यूशन गुणवत्ता, ट्रेडिंग लागत, प्लेटफ़ॉर्म प्रदर्शन और क्लाइंट सपोर्ट को ध्यान में रखते हुए, आप कुल मिलाकर JKV Global से कितने संतुष्ट हैं?" },
-    im: { title: "आप JKV Global में सबसे ज़रूरी कौन-से सुधार देखना चाहेंगे?", help: "कम से कम 3 विकल्प चुनें।", options: [
-      "Forex और CFD पर अधिक प्रतिस्पर्धी स्प्रेड", "तेज़ ऑर्डर एक्ज़ीक्यूशन", "बेहतर एक्ज़ीक्यूशन विश्वसनीयता और कम रीकोट",
-      "बेहतर स्लिपेज प्रबंधन", "अधिक प्रतिस्पर्धी कमीशन, स्वैप और ट्रेडिंग लागत", "ट्रेडिंग प्लेटफ़ॉर्म की बेहतर स्थिरता",
-      "आसान खाता प्रबंधन और क्लाइंट पोर्टल एक्सेस", "तेज़ और अधिक प्रभावी कस्टमर सपोर्ट",
-      "अधिक प्रासंगिक प्रमोशन और ट्रेडिंग लाभ", "अधिक नियमित संचार और बाज़ार से जुड़े अपडेट", "अन्य" ] },
-    tm: { title: "अगर हम आपकी मुख्य चिंताओं को दूर करें और इस सर्वे में बताए गए क्षेत्रों में सुधार करें, तो क्या आप JKV Global के साथ अधिक सक्रिय रूप से ट्रेड करने पर विचार करेंगे?", options: [
-      "हाँ, ज़रूर", "हाँ, सुधारों पर निर्भर करता है", "शायद", "इस समय नहीं", "नहीं" ] },
-    comment: { title: "क्या आप JKV Global के साथ कोई अन्य फ़ीडबैक या सुझाव साझा करना चाहेंगे?", help: "वैकल्पिक: कृपया कोई भी टिप्पणी साझा करें जो आपके ट्रेडिंग अनुभव को बेहतर बनाने में हमारी मदद कर सके।" }
-  }
-},
-
-mr: {
-  ui: {
-    tag: "क्लायंट सर्वेक्षण",
-    h1: "आपला ट्रेडिंग अनुभव अधिक चांगला करण्यासाठी आम्हाला मदत करा",
-    sub: "सुमारे 3 मिनिटे · आपली उत्तरे आपोआप सेव्ह होत राहतात.",
-    dear: "प्रिय ग्राहक,", dearName: "प्रिय {n},",
-    intro1: "JKV Global मध्ये, आम्ही विश्वासार्ह, स्पर्धात्मक आणि पारदर्शक Forex व CFD ट्रेडिंग अनुभव देण्यासाठी वचनबद्ध आहोत. आम्ही आमच्या सेवा अधिक मजबूत करत असताना आणि ट्रेडिंगचे वातावरण सुधारत असताना, आपल्या अपेक्षा समजून घेण्यासाठी आणि सुधारणेची क्षेत्रे ओळखण्यासाठी आपला अभिप्राय आम्हाला अत्यंत महत्त्वाचा आहे.",
-    intro2: "आपल्या उत्तरांमुळे आम्हाला आमची एक्झिक्युशन गुणवत्ता, ट्रेडिंग अटी, प्लॅटफॉर्मचा अनुभव आणि एकूण क्लायंट सपोर्ट सुधारण्यास मदत होईल.",
-    creditTitle: "सर्वेक्षण पूर्ण करा आणि $50 ट्रेडिंग क्रेडिट मिळवा",
-    credit1: "कृतज्ञता म्हणून, <b>KYC-मंजूर खाते असलेले पात्र क्लायंट $50 ट्रेडेबल बोनस मिळवण्यास पात्र असतील</b>, लागू अटी व शर्तींच्या अधीन.",
-    credit2: "ज्या क्लायंटची KYC पडताळणी अद्याप प्रलंबित आहे, तेही यात सहभागी होऊ शकतात. मात्र, ट्रेडिंग क्रेडिट फक्त KYC-मंजूर खाते असलेल्या क्लायंटनाच उपलब्ध असेल.",
-    credit3: "<b>सर्वेक्षण पूर्ण केल्यानंतर, आपले $50 ट्रेडिंग क्रेडिट मिळवण्यासाठी कृपया JKV Global Support शी संपर्क साधा.</b>",
-    termsLink: "अटी व शर्ती",
-    progress: "{t} पैकी {d} उत्तरे दिली",
-    saving: "सेव्ह होत आहे…", submitting: "सबमिट होत आहे…", saved: "सर्व बदल सेव्ह झाले ✓", saveErr: "सेव्ह झाले नाही – आपले इंटरनेट कनेक्शन तपासा",
-    step: "टप्पा {i} / {n}",
-    skipped: "आपण अद्याप ट्रेडिंग सुरू केलेले नसल्यामुळे, प्रश्न 1–5 वगळण्यात आले आहेत. आपण टप्पा 1 मधील आपले उत्तर कधीही बदलू शकता.",
-    yourAnswer: "आपले उत्तर: ",
-    selected: "{n} निवडले", selectMin: " – कृपया किमान {m} निवडा",
-    otherPh: "कृपया इतर कोणती सुधारणा हवी ते सांगा (ऐच्छिक)",
-    typeHere: "येथे लिहा… (आपण मराठी किंवा इंग्रजीत लिहू शकता)",
-    optional: "(ऐच्छिक)",
-    answerThis: "कृपया या प्रश्नाचे उत्तर द्या.",
-    hintAll: "सर्व तयार आहे – आपली उत्तरे पाठवण्यासाठी 'सबमिट करा' दाबा.",
-    hintDefault: "कृपया सर्व प्रश्नांची उत्तरे द्या. प्रश्न 13 ऐच्छिक आहे.",
-    submitFail: "सध्या सबमिट होऊ शकले नाही. कृपया आपले कनेक्शन तपासा आणि पुन्हा प्रयत्न करा.",
-    submit: "सबमिट करा",
-    thanksTitle: "आपल्या अभिप्रायाबद्दल धन्यवाद",
-    thanksBody: "JKV Global क्लायंट एक्सपीरियन्स सर्वेक्षण पूर्ण करण्यासाठी वेळ दिल्याबद्दल धन्यवाद. आपल्या अभिप्रायामुळे आम्हाला आपल्या गरजा अधिक चांगल्या प्रकारे समजून घेण्यास आणि आमच्या ट्रेडिंग सेवांमध्ये सुधारणा करण्यास मदत होईल.",
-    reqTitle: "आपल्या $50 ट्रेडिंग क्रेडिटसाठी विनंती करा",
-    reqBody: "<b>आपल्या $50 ट्रेडिंग क्रेडिटसाठी विनंती करण्यासाठी, कृपया JKV Global Support शी संपर्क साधा.</b> हे क्रेडिट फक्त पात्र KYC-मंजूर खात्यांसाठी उपलब्ध आहे आणि लागू अटी व शर्तींच्या अधीन आहे.",
-    supportBtn: "JKV Global Support शी संपर्क साधा ({e})",
-    appreciate: "आपण दिलेल्या वेळेबद्दल आम्ही आभारी आहोत आणि आपल्याला अधिक चांगली सेवा देण्यास उत्सुक आहोत.",
-    tagline: "आपला ट्रेडिंग अनुभव आमच्यासाठी महत्त्वाचा आहे.",
-    tradeH: "आपल्या पुढच्या ट्रेडसाठी तयार आहात?", tradeP: "आपल्या खात्यात लॉग इन करा आणि काही सेकंदांत मार्केटमध्ये प्रवेश करा.", tradeBtn: "आता ट्रेड करा",
-    alreadyTitle: "उत्तर आधीच सबमिट झाले आहे",
-    alreadyBody: "धन्यवाद – आम्हाला आपला अभिप्राय आधीच मिळाला आहे. प्रत्येक क्लायंट हे सर्वेक्षण फक्त एकदाच सबमिट करू शकतो.",
-    alreadyCreditT: "आपण अद्याप आपल्या $50 ट्रेडिंग क्रेडिटसाठी विनंती केली नाही का?",
-    alreadyCreditB: "कृपया JKV Global Support शी संपर्क साधा. हे क्रेडिट फक्त पात्र KYC-मंजूर खात्यांसाठी उपलब्ध आहे आणि लागू अटी व शर्तींच्या अधीन आहे.",
-    loading: "आपले सर्वेक्षण लोड होत आहे…",
-    invalidTitle: "कृपया आपल्या ईमेलमधील लिंक वापरा",
-    invalidBody: "हे सर्वेक्षण प्रत्येक JKV Global क्लायंटसाठी वैयक्तिक आहे. कृपया आम्ही पाठवलेल्या ईमेलमधील बटण वापरून ते उघडा.",
-    termsTitle: "$50 ट्रेडिंग क्रेडिट – अटी व शर्ती",
-    terms: [
-      "$50 ट्रेडिंग क्रेडिट फक्त KYC-मंजूर खाते असलेल्या पात्र क्लायंटसाठी उपलब्ध आहे.",
-      "ज्या क्लायंटची KYC प्रलंबित किंवा अपूर्ण आहे, ते सर्वेक्षण पूर्ण करू शकतात; मात्र त्यांच्या खात्याला KYC मंजुरी मिळेपर्यंत आणि ते लागू पात्रता निकष पूर्ण करेपर्यंत ते क्रेडिटसाठी पात्र ठरणार नाहीत.",
-      "सर्वेक्षण पूर्ण केल्यानंतर, पात्र क्लायंटनी क्रेडिटची विनंती करण्यासाठी JKV Global Support शी संपर्क साधणे आवश्यक आहे.",
-      "हे क्रेडिट खाते पडताळणी, पात्रता तपासणी आणि JKV Global च्या लागू बोनस व ट्रेडिंग-क्रेडिट अटींच्या अधीन आहे.",
-      "हे क्रेडिट एक ट्रेडेबल बोनस आहे. हा कॅश बोनस, कॅश डिपॉझिट किंवा थेट रोख रक्कम काढण्याचा हक्क नाही, तसेच हा लॉस-अब्सॉर्बिंग (तोटा भरून काढणारा) बोनसही नाही. याचा वापर, रक्कम काढणे किंवा नफा काढणे यासंबंधीचे कोणतेही निर्बंध लागू बोनस अटींनुसार असतील.",
-      "JKV Global आपल्या लागू धोरणांनुसार सर्वेक्षण पूर्ण झाल्याची पडताळणी करण्याचा आणि पात्रता ठरवण्याचा अधिकार राखून ठेवते.",
-      "अतिरिक्त अटी व शर्ती लागू होऊ शकतात."
-    ],
-    prevail: "हे भाषांतर केवळ सोयीसाठी आहे. कोणत्याही फरकाच्या बाबतीत इंग्रजी आवृत्ती ग्राह्य धरली जाईल.",
-    privacy: "आपली उत्तरे फक्त आपल्या क्लायंट ID शी जोडलेली असतात आणि आमच्या गोपनीयता धोरणानुसार केवळ आमच्या सेवा सुधारण्यासाठी वापरली जातात.",
-    regulated: "JKV Global Capital Market Services Ltd. ही फायनान्शियल सर्व्हिसेस कमिशन (FSC), मॉरिशस यांच्याकडून अधिकृत आणि नियमन केलेली कंपनी आहे, परवाना क्र. GB23201820.",
-    risk: "जोखीम इशारा: CFD आणि Forex ही लिव्हरेज्ड उत्पादने आहेत आणि त्यामध्ये आपल्या भांडवलासाठी उच्च प्रमाणात जोखीम असते.",
-    riskNote: "कृपया जबाबदारीने ट्रेड करा: ट्रेडिंगचे निर्णय आपल्या स्वतःच्या विवेकावर आणि जोखमीवर घेतले जातात, त्यामुळे फक्त तेवढ्याच रकमेने ट्रेड करा जी गमावणे आपल्याला परवडेल, आणि आवश्यक असल्यास स्वतंत्र सल्ला घ्या.",
-    mStep1: "टप्पा 1 (आपल्याविषयी) चे उत्तर द्या",
-    mNums: "प्रश्न {q} चे उत्तर द्या (आपण N/A निवडू शकता)", mNumsMany: "प्रश्न {q} ची उत्तरे द्या (आपण N/A निवडू शकता)",
-    mMulti: "प्रश्न {n} मध्ये किमान {m} पर्याय निवडा",
-    mJoin: ", आणि ", mPre: "कृपया ", mPost: "."
-  },
-  scale: ["अतिशय वाईट", "वाईट", "असमाधानकारक", "अपेक्षेपेक्षा कमी", "सरासरीपेक्षा कमी", "सरासरी", "चांगले", "खूप चांगले", "उत्कृष्ट", "अपवादात्मक"],
-  na: "लागू नाही / मूल्यांकन करता येत नाही",
-  sections: ["आपल्याविषयी", "आपला ट्रेडिंग अनुभव", "प्लॅटफॉर्म आणि खाते अनुभव", "संवाद आणि क्लायंट सहभाग", "एकूण समाधान आणि अपेक्षा"],
-  q: {
-    st: { title: "आज आपल्यासाठी कोणता पर्याय सर्वात योग्य आहे?", options: [
-      "मी JKV Global सोबत नियमितपणे ट्रेड करतो/करते", "मी पूर्वी ट्रेड केले आहे, पण अलीकडे नाही",
-      "मी माझे KYC पूर्ण केले आहे, पण कधीही ट्रेड केलेले नाही", "मी खाते उघडले आहे, पण माझे KYC अद्याप प्रलंबित आहे" ] },
-    p0: { title: "आपण ज्या Forex पेअर्स आणि इतर CFD इन्स्ट्रुमेंट्समध्ये ट्रेड करता, त्यांमधील JKV Global चे bid/ask स्प्रेड किती स्पर्धात्मक आहेत – याला आपण किती रेटिंग द्याल?" },
-    p1: { title: "आपल्या Forex आणि CFD ऑर्डर ज्या वेगाने एक्झिक्युट होतात, त्याबद्दल आपण किती समाधानी आहात?" },
-    p2: { title: "सामान्य बाजार परिस्थितीत JKV Global चा ऑर्डर फिल रेट, रिकोट किती वेळा येतात आणि एकूण एक्झिक्युशनची विश्वासार्हता याला आपण किती रेटिंग द्याल?" },
-    p3: { title: "ऑर्डर एक्झिक्युशनदरम्यान JKV Global पॉझिटिव्ह आणि निगेटिव्ह स्लिपेज किती प्रभावीपणे हाताळते?" },
-    p4: { title: "आमचे लिव्हरेज पर्याय, स्वॅप दर, कमिशन आणि एकूण ट्रेडिंग खर्च आपल्याला किती स्पर्धात्मक आणि पारदर्शक वाटतात?" },
-    p5: { title: "JKV Global ट्रेडिंग प्लॅटफॉर्मची स्थिरता, प्रतिसादक्षमता आणि वापरण्यातील सुलभता याला आपण किती रेटिंग द्याल?" },
-    p6: { title: "आमचे क्लायंट पोर्टल वापरणे, आपले ट्रेडिंग खाते व्यवस्थापित करणे आणि आवश्यक खाते सुविधा वापरणे किती सोपे आहे?" },
-    p7: { title: "JKV Global चे प्रमोशन, ट्रेडिंग इन्सेन्टिव्ह आणि क्लायंट लाभ आपल्याला किती आकर्षक आणि समर्पक वाटतात?" },
-    p8: { title: "JKV Global ट्रेडिंगशी संबंधित अपडेट, खात्याची माहिती, उत्पादनातील बदल आणि महत्त्वाच्या घोषणा आपल्यापर्यंत किती प्रभावीपणे पोहोचवते?" },
-    p9: { title: "एक्झिक्युशनची गुणवत्ता, ट्रेडिंग खर्च, प्लॅटफॉर्मची कामगिरी आणि क्लायंट सपोर्ट लक्षात घेता, आपण एकूणच JKV Global बद्दल किती समाधानी आहात?" },
-    im: { title: "आपल्याला JKV Global कडून सर्वात महत्त्वाच्या कोणत्या सुधारणा पाहायला आवडतील?", help: "किमान 3 पर्याय निवडा.", options: [
-      "Forex आणि CFD वर अधिक स्पर्धात्मक स्प्रेड", "जलद ऑर्डर एक्झिक्युशन", "अधिक विश्वासार्ह एक्झिक्युशन आणि कमी रिकोट",
-      "स्लिपेजचे अधिक चांगले व्यवस्थापन", "अधिक स्पर्धात्मक कमिशन, स्वॅप आणि ट्रेडिंग खर्च", "ट्रेडिंग प्लॅटफॉर्मची अधिक स्थिरता",
-      "सोपे खाते व्यवस्थापन आणि क्लायंट पोर्टलचा सहज वापर", "जलद आणि अधिक प्रभावी कस्टमर सपोर्ट",
-      "अधिक समर्पक प्रमोशन आणि ट्रेडिंग लाभ", "अधिक नियमित संवाद आणि बाजाराशी संबंधित अपडेट", "इतर" ] },
-    tm: { title: "आम्ही आपल्या मुख्य अडचणी दूर केल्या आणि या सर्वेक्षणात सांगितलेल्या क्षेत्रांमध्ये सुधारणा केली, तर आपण JKV Global सोबत अधिक सक्रियपणे ट्रेड करण्याचा विचार कराल का?", options: [
-      "हो, नक्कीच", "हो, सुधारणांवर अवलंबून", "कदाचित", "सध्या नाही", "नाही" ] },
-    comment: { title: "आपण JKV Global सोबत आणखी कोणता अभिप्राय किंवा सूचना शेअर करू इच्छिता का?", help: "ऐच्छिक: आपला ट्रेडिंग अनुभव सुधारण्यासाठी उपयोगी ठरतील अशा कोणत्याही टिप्पण्या कृपया शेअर करा." }
-  }
-}
-};
-
-let LANG = "en";
-const fill = (s, v) => String(s).replace(/\{(\w+)\}/g, (m, k) => (v && v[k] !== undefined ? v[k] : m));
-const t = (key, v) => fill((TR[LANG].ui[key] !== undefined ? TR[LANG].ui[key] : TR.en.ui[key]), v);
-// Question text in the chosen language (English from SECTIONS when no translation exists)
-const qTitle = q => (TR[LANG].q && TR[LANG].q[q.k] && TR[LANG].q[q.k].title) || q.title;
-const qHelp = q => (TR[LANG].q && TR[LANG].q[q.k] && TR[LANG].q[q.k].help) || q.help;
-const qOptions = q => (TR[LANG].q && TR[LANG].q[q.k] && TR[LANG].q[q.k].options) || q.options;
-const scaleLabels = q => TR[LANG].scale || q.labels;
-const naLabel = () => TR[LANG].na || NA_LABEL;
-const secTitle = (sec, i) => (TR[LANG].sections && TR[LANG].sections[i]) || sec.title;
 
 /* ── Questions – keys and order must match JKV_Survey_Builder.gs ── */
 // One rating scale for every question (1–10) – same meaning for each number everywhere
@@ -555,10 +286,10 @@ const required = () => SECTIONS.filter(sec => !skippedSection(sec)).flatMap(s =>
 /* ── Render ── */
 function render() {
   $("questions").innerHTML = SECTIONS.map((sec, i) => `<section class="card">
-      <div class="step">${t("step", { i: i + 1, n: SECTIONS.length })}</div>
-      <h2>${esc(secTitle(sec, i))}</h2>
+      <div class="step">Step ${i + 1} of ${SECTIONS.length}</div>
+      <h2>${sec.title}</h2>
       ${skippedSection(sec)
-        ? `<div class="skipped">${esc(t("skipped"))}</div>`
+        ? `<div class="skipped">As you haven't started trading yet, questions 1–5 are skipped. You can change your answer in Step 1 at any time.</div>`
         : sec.questions.map(renderQ).join("")}
     </section>`).join("");
   updateProgress();
@@ -569,37 +300,36 @@ function renderQ(q) {
   let body = "";
   if (q.type === "scale") {
     const nums = [1,2,3,4,5,6,7,8,9,10,"na"];
-    const L = scaleLabels(q), NA = naLabel();
-    const chosen = v === "na" ? NA : (typeof v === "number" ? `${v} – ${L[v - 1]}` : "");
+    const chosen = v === "na" ? NA_LABEL : (typeof v === "number" ? `${v} – ${q.labels[v - 1]}` : "");
     body = `<div class="scale" style="grid-template-columns:repeat(11,1fr)">` +
-      nums.map(n => `<button type="button" class="t-${tone(n)}" data-k="${q.k}" data-v="${n}" aria-pressed="${v === n}" title="${esc(n === "na" ? NA : n + " – " + L[n - 1])}">${n === "na" ? "N/A" : n}</button>`).join("") +
-      `</div><div class="scale-labels"><span>1 – ${esc(L[0])}</span><span>10 – ${esc(L[9])}</span></div>` +
-      `<div class="chosen">${chosen ? esc(t("yourAnswer")) + esc(chosen) : ""}</div>`;
+      nums.map(n => `<button type="button" class="t-${tone(n)}" data-k="${q.k}" data-v="${n}" aria-pressed="${v === n}" title="${esc(n === "na" ? NA_LABEL : n + " – " + q.labels[n - 1])}">${n === "na" ? "N/A" : n}</button>`).join("") +
+      `</div><div class="scale-labels"><span>1 – ${esc(q.labels[0])}</span><span>10 – ${esc(q.labels[9])}</span></div>` +
+      `<div class="chosen">${chosen ? "Your answer: " + esc(chosen) : ""}</div>`;
   } else if (q.type === "single") {
-    body = `<div class="options">` + qOptions(q).map((label, i) => {
+    body = `<div class="options">` + q.options.map((label, i) => {
       const val = q.codes ? q.codes[i] : i;
       return `<button type="button" class="opt" data-k="${q.k}" data-v="${val}" aria-pressed="${v === val}">${esc(label)}</button>`;
     }).join("") + `</div>`;
     if (q.other !== undefined && v === q.other) {
-      body += `<input class="other" id="imOther" maxlength="500" placeholder="${esc(t("otherPh"))}" value="${esc(answers.imOther || "")}">`;
+      body += `<input class="other" id="imOther" maxlength="500" placeholder="Please tell us which improvement (optional)" value="${esc(answers.imOther || "")}">`;
     }
   } else if (q.type === "multi") {
     const sel = Array.isArray(v) ? v : [];
-    body = `<div class="options">` + qOptions(q).map((label, i) =>
+    body = `<div class="options">` + q.options.map((label, i) =>
       `<button type="button" class="opt opt-multi" data-k="${q.k}" data-v="${i}" aria-pressed="${sel.includes(i)}">${esc(label)}</button>`).join("") + `</div>`;
-    body += `<div class="chosen">${esc(t("selected", { n: sel.length }))}${sel.length < q.min ? esc(t("selectMin", { m: q.min })) : " ✓"}</div>`;
+    body += `<div class="chosen">${sel.length} selected${sel.length < q.min ? ` – please select at least ${q.min}` : " ✓"}</div>`;
     if (q.other !== undefined && sel.includes(q.other)) {
-      body += `<input class="other" id="imOther" maxlength="500" placeholder="${esc(t("otherPh"))}" value="${esc(answers.imOther || "")}">`;
+      body += `<input class="other" id="imOther" maxlength="500" placeholder="Please tell us which other improvement (optional)" value="${esc(answers.imOther || "")}">`;
     }
   } else if (q.type === "text") {
-    body = `<textarea id="comment" maxlength="2000" placeholder="${esc(t("typeHere"))}">${esc(v || "")}</textarea>`;
+    body = `<textarea id="comment" maxlength="2000" placeholder="Type here…">${esc(v || "")}</textarea>`;
   }
   const missing = showMissing && !q.optional && !isAnswered(q);
   return `<div class="q${missing ? " missing" : ""}" id="q-${q.k}">
-    <div class="q-title">${q.n ? `<span class="qnum">${q.n}.</span>` : ""}${esc(qTitle(q))}${q.optional ? ` <span class="optional">${esc(t("optional"))}</span>` : ""}</div>
-    ${qHelp(q) ? `<div class="q-help">${esc(qHelp(q))}</div>` : '<div style="height:8px"></div>'}
+    <div class="q-title">${q.n ? `<span class="qnum">${q.n}.</span>` : ""}${esc(q.title)}${q.optional ? ' <span class="optional">(optional)</span>' : ""}</div>
+    ${q.help ? `<div class="q-help">${esc(q.help)}</div>` : '<div style="height:8px"></div>'}
     ${body}
-    ${missing ? `<div class="req">${esc(t("answerThis"))}</div>` : ""}
+    ${missing ? '<div class="req">Please answer this question.</div>' : ""}
   </div>`;
 }
 
@@ -608,20 +338,20 @@ function missingText(list) {
   const multi = list.filter(q => q.type === "multi");
   const nums = list.filter(q => q.n && q.type !== "multi").map(q => q.n);
   const parts = [];
-  if (step1) parts.push(t("mStep1"));
-  if (nums.length) parts.push(t(nums.length > 1 ? "mNumsMany" : "mNums", { q: nums.join(", ") }));
-  multi.forEach(q => parts.push(t("mMulti", { m: q.min, n: q.n })));
-  return t("mPre") + parts.join(t("mJoin")) + t("mPost");
+  if (step1) parts.push("answer Step 1 (About you)");
+  if (nums.length) parts.push(`answer ${nums.length > 1 ? "questions" : "question"} ${nums.join(", ")} (you can choose N/A)`);
+  multi.forEach(q => parts.push(`select at least ${q.min} options in question ${q.n}`));
+  return "Please " + parts.join(", and ") + ".";
 }
 
 function updateProgress() {
   const req = required();
   const done = req.filter(isAnswered).length;
-  $("progressText").textContent = t("progress", { d: done, t: req.length });
+  $("progressText").textContent = `${done} of ${req.length} answered`;
   const left = req.filter(q => !isAnswered(q));
-  if (!left.length) $("submitHint").textContent = t("hintAll");
+  if (!left.length) $("submitHint").textContent = "All set – press Submit to send your answers.";
   else if (showMissing) $("submitHint").textContent = missingText(left);
-  else $("submitHint").textContent = t("hintDefault");
+  else $("submitHint").textContent = "Please answer all questions. Question 13 is optional.";
   $("barFill").style.width = Math.round(done / req.length * 100) + "%";
 }
 
@@ -667,7 +397,7 @@ function save(final) {
 
 async function doSave(final) {
   if (submitted || (submitting && !final)) return true;
-  setSaved(t(final ? "submitting" : "saving"));
+  setSaved(final ? "Submitting…" : "Saving…");
   try {
     const res = await fetch(API_URL, { method: "POST", body: JSON.stringify({ cid: CID, s: SIG, answers, final }) });
     const data = await res.json();
@@ -675,10 +405,10 @@ async function doSave(final) {
     if (data.error === "incomplete") { lastMissing = data.missing || []; setSaved(""); return false; }
     if (!data.ok) throw new Error(data.error || "save failed");
     if (final) { submitted = true; clearLocal(); }
-    setSaved(t("saved"), "ok");
+    setSaved("All changes saved ✓", "ok");
     return true;
   } catch (err) {
-    setSaved(t("saveErr"), "err");
+    setSaved("Couldn't save – check your connection", "err");
     return false;
   }
 }
@@ -700,11 +430,11 @@ $("submitBtn").addEventListener("click", async () => {
   submitting = true;
   clearTimeout(saveTimer);
   const btn = $("submitBtn");
-  btn.disabled = true; btn.textContent = t("submitting");
+  btn.disabled = true; btn.textContent = "Submitting…";
   let ok = await save(true);
   if (!ok && !submitted) { await new Promise(r => setTimeout(r, 1500)); ok = await save(true); }
   submitting = false;
-  btn.disabled = false; btn.textContent = t("submit");
+  btn.disabled = false; btn.textContent = "Submit";
   if (ok) showOnly("thanks");
   else if (lastMissing.length) {                  // the server found unanswered questions
     const qs = lastMissing.map(k => allQuestions().find(q => q.k === k)).filter(Boolean);
@@ -713,7 +443,7 @@ $("submitBtn").addEventListener("click", async () => {
     $("submitHint").textContent = missingText(qs);
     if (qs[0]) $("q-" + qs[0].k).scrollIntoView({ behavior: "smooth", block: "center" });
   }
-  else if (!submitted) $("submitHint").textContent = t("submitFail");
+  else if (!submitted) $("submitHint").textContent = "We couldn't submit just now. Please check your connection and try again.";
 });
 
 // Show one screen: "survey" (with the Submit bar), "thanks", "already", "invalid" or "loading"
@@ -723,50 +453,18 @@ function showOnly(name) {
   window.scrollTo(0, 0);
 }
 
-
-/* ── Language switch (English / हिंदी / मराठी) ── */
-function applyLanguage() {
-  document.documentElement.lang = LANG;
-  document.querySelectorAll("[data-i18n]").forEach(el => { el.innerHTML = t(el.dataset.i18n); });   // texts are our own, not client input
-  $("dear").textContent = NAME ? t("dearName", { n: NAME }) : t("dear");
-  $("termsList").innerHTML = (TR[LANG].ui.terms || TR.en.ui.terms).map(x => `<li>${esc(x)}</li>`).join("");
-  $("prevail").textContent = TR[LANG].ui.prevail || "";
-  document.querySelectorAll(".js-support").forEach(a => { a.textContent = t("supportBtn", { e: SUPPORT_EMAIL }); });
-  if (!submitting) $("submitBtn").textContent = t("submit");
-  $("langBar").querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === LANG)));
-  if (!$("survey").classList.contains("hidden")) { const y = window.scrollY; render(); window.scrollTo(0, y); }
-  setSaved("");
-}
-
-function setupLanguage() {
-  let pick = (params.get("lang") || "").toLowerCase();
-  if (!TR[pick]) { try { pick = localStorage.getItem("jkv_lang") || ""; } catch (e) {} }
-  LANG = TR[pick] ? pick : "en";
-  $("langBar").innerHTML = LANGS.map(([code, label]) =>
-    `<button type="button" data-lang="${code}" lang="${code}" aria-pressed="${code === LANG}">${label}</button>`).join("");
-  $("langBar").addEventListener("click", e => {
-    const b = e.target.closest("button[data-lang]");
-    if (!b || b.dataset.lang === LANG) return;
-    LANG = b.dataset.lang;
-    try { localStorage.setItem("jkv_lang", LANG); } catch (e) {}
-    applyLanguage();
-  });
-  applyLanguage();
-}
-
 /* ── Start ── */
 (function init() {
   // Support links: email with the client ID already filled in
-  const mail = `mailto:${SUPPORT_EMAIL}?subject=${encodeURIComponent("Survey completed – $50 trading credit request (Client ID " + CID + ")")}` +
-               `&body=${encodeURIComponent("Hello JKV Global Support,\n\nI have completed the Client Experience Survey and would like to request my $50 trading credit.\n\nClient ID: " + CID + "\n\nThank you.")}`;
-  document.querySelectorAll(".js-support").forEach(a => { a.href = mail; });
-  setupLanguage();
-  // Footer: logo first, then all social icons on one line
-  $("social").innerHTML = `<a class="foot-logo" href="https://www.jkvglobal.com" target="_blank" rel="noopener" aria-label="JKV Global website"><img src="icons/jkv-logo.png" alt="JKV Global" width="34" height="36"></a>` +
-    SOCIAL_LINKS.filter(([, u]) => /^https?:\/\//.test(u))
+  const mail = `mailto:${SUPPORT_EMAIL}?subject=${encodeURIComponent("Survey completed – $100 tradable bonus claim (Client ID " + CID + ")")}` +
+               `&body=${encodeURIComponent("Hello JKV Global Support,\n\nI have completed and submitted the Client Experience Survey and made the qualifying deposit of at least $50. I would like to claim my $100 tradable bonus.\n\nClient ID: " + CID + "\n\nThank you.")}`;
+  document.querySelectorAll(".js-support").forEach(a => { a.href = mail; a.textContent = "Contact JKV Global Support (" + SUPPORT_EMAIL + ")"; });
+  // Social icons in the footer banner, one line
+  $("social").innerHTML = SOCIAL_LINKS.filter(([, u]) => /^https?:\/\//.test(u))
     .map(([n, u, icon]) => `<a href="${esc(u)}" target="_blank" rel="noopener" title="JKV Global on ${esc(n)}" aria-label="JKV Global on ${esc(n)}"><img src="${esc(icon)}" alt="${esc(n)}" width="28" height="28"></a>`).join("");
 
   if (!/^[A-Za-z0-9_-]{1,40}$/.test(CID) || !/^[0-9a-f]{16}$/.test(SIG)) { showOnly("invalid"); return; }
+  if (NAME) { $("dear").textContent = `Dear ${NAME},`; }
 
   // The answer tapped in the email (e.g. the overall-satisfaction circles)
   const q = params.get("q"), v = params.get("v");
